@@ -1,0 +1,48 @@
+name: Convert Markdown to PDF, RTF, and DOCX
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '**.md'  # Trigger the workflow when a markdown file is pushed
+
+jobs:
+  convert_markdown:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Pandoc
+      run: sudo apt-get install -y pandoc texlive-xetex
+
+    - name: Install LibreOffice (for DOCX and RTF support)
+      run: sudo apt-get install -y libreoffice
+
+    - name: Convert Markdown to PDF
+      run: pandoc input.md -o output.pdf
+
+    - name: Convert Markdown to RTF
+      run: pandoc input.md -o output.rtf
+
+    - name: Convert Markdown to DOCX
+      run: libreoffice --headless --convert-to docx input.md
+
+    - name: Create a GitHub release
+      run: |
+        VERSION_TAG="v$(date +'%Y%m%d%H%M%S')"  # Use a timestamp as version tag
+        gh release create "$VERSION_TAG" \
+          output.pdf output.rtf output.docx \
+          --title "Markdown Conversion Release" \
+          --notes "Converted markdown file to PDF, RTF, and DOCX formats."
+
+    - name: Upload generated files as artifacts (optional)
+      uses: actions/upload-artifact@v3
+      with:
+        name: markdown-conversion-files
+        path: |
+          output.pdf
+          output.rtf
+          output.docx
