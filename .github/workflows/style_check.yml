@@ -14,22 +14,15 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: '14'
+        node-version: '23.x'
 
-    - name: Install dependencies
-      run: npm install
+    - name: Install dependencies (from lockfile)
+      run: npm ci
 
     - name: Run style check
       run: npm run lint
-
-    - name: Create review suggestions
-      if: ${{ github.event_name == 'pull_request' }}
-      uses: github/codeql-action/autofix@v3
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        config-file: .github/style-config.yml
