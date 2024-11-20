@@ -14,3 +14,4 @@
     * developer advocate
     * mentor, devops/automation advocate
     * opinionated, but plays well with others
+* rewriting prompts using copilot
