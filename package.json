@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "lint": "eslint . --debug"
+    "lint": "eslint . --format stylish --color --debug --stats"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",
