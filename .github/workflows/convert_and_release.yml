@@ -16,7 +16,9 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Install pandoc
-      run: sudo apt-get install --yes pandoc texlive
+      run: |
+        sudo apt-get --assume-yes --quiet update
+        sudo apt-get --assume-yes --quiet install pandoc texlive-latex-extra
 
     - name: Ensure build directory exists
       run: mkdir -vp ./build
@@ -37,7 +39,7 @@ jobs:
       run: pandoc src/professional.md --standalone --output=build/professional.md
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: converted-files
         path: |
