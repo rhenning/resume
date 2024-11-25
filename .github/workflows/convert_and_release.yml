@@ -37,7 +37,7 @@ jobs:
       run: pandoc src/professional.md --standalone --output=build/professional.md
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: converted-files
         path: |
