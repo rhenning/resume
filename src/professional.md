@@ -11,27 +11,36 @@ Philadelphia, PA 19125
 <linkedin:https://linked.in/rhenning>  
 <github:https://github.com/rhenning>  
 
-
 ## Professional Experience
 
 **Warner Bros. Discovery** – Philadelphia, US  
 Principal Engineer, [**_Max_**](max.com)  
 2022 - 2024
 
+* Principal Platform Engineer working to design
+* Hands-on pair programming, code review & working sessions w/
 * Design Infrastructure Platform for **_Max_**
-    * 5000 Engineers
-    * 76.8M Customers (circa 2022)
-    * Launch in North America
-    * Expand into LatAm & EMEA
-    * Oversee new platform combining HBO Max & Discovery+
-* AWS Transit Gateway, Landing Pad (?), EKS, 
+  * 5000 Engineers
+  * 76.8M Customers (circa 2022)
+  * Launch in North America
+  * Expand into LatAm & EMEA
+  * Oversee new platform combining HBO Max & Discovery+
+    * one of the largest media mergers of all time
+* AWS Transit Gateway, Landing Pad (?), EKS,
 * Kubernetes
-* Apache Kafka / Confluent
+* Apache Kafka / Confluent / MaaS / Event-based APIs & microservices
 * Terraform & Terragrunt
 * GitHub Actions / Jenkins
-* advocate of platform-as-product, product owner, TPM
+* advocate of (internal) platform-as-product, product owner, TPM, Inner-source,
+  remote pair programming & cross-team collaboration & working session,
+  collective ownership & software stewardship
+* work closely with multiple business partners / vendors in order to solve thorny cross-provider issues and facilitate communication
+* devsecops guild w/ priyam
+* participant in global architecture guild
+* work closely with distinguished engineers
 * SRE, async messaging, event-based apps, networking specialties
-
+* tireless advocate for toil reduction, process improvement, and blameless post-
+  mortems
 
 **WarnerMedia** – Philadelphia, US  
 Principal Software Engineer, [**_HBO Max_**](hbomax.com)  
@@ -50,7 +59,6 @@ Principal Software Engineer, [**_HBO Max_**](hbomax.com)
 * AWS SDK v2
 * GHA
 * Jenkins
-
 
 **Comcast** – Philadelphia, US  
 Principal Software Engineer, X1 Video Platform & Xfinity Stream  
@@ -107,3 +115,15 @@ Unix Systems Engineer, Core Systems, Web Hosting
 * C
 * migration of sun unix to linux & commodity hardware
 * Linux, Solaris, Free/OpenBSD, Windows
+
+## Extracurriculars
+
+* maker
+* microelectronics rework
+* musical instrument service and repair
+* synthesizer design, mods, repair
+* embedded systems
+* information security
+* interest in audio engineering & high-performance linux multimedia workstations
+* electronic musician / synthesist / project studio owner
+* FPS coop tech board / jovial / etc
