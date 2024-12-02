@@ -7,6 +7,7 @@ on:
   pull_request:
     branches:
       - '**'
+  workflow_dispatch:
 
 jobs:
   style-check-markdownlint:
@@ -72,3 +73,4 @@ jobs:
           github_token: ${{ secrets.github_token }}
           locale: "US"
           fail_on_error: true
+          reporter: github-pr-review

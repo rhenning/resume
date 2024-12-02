@@ -1,0 +1,6 @@
+---
+extends: relaxed
+
+rules:
+  max: 120
+  level: warning
