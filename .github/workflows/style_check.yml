@@ -1,9 +1,9 @@
-name: Style Check
+name: Style & Syntax Checks
 
 on:
   push:
     branches:
-      - '**'
+      - main
   pull_request:
     branches:
       - '**'
@@ -11,18 +11,17 @@ on:
 jobs:
   style-check:
     runs-on: ubuntu-latest
-
+    permissions:
+      contents: read
+      pull-requests: write
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '23.x'
+      - name: Run reviewdog/biome
+        uses: mongolyy/reviewdog-action-biome@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review
+          fail_on_error: true
 
-    - name: Install dependencies (from lockfile)
-      run: npm ci
-
-    - name: Run style check
-      run: npm run lint
