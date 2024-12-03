@@ -26,7 +26,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
-          fail_on_error: true
+          fail_level: error
 
   style-check-yamllint:
     runs-on: ubuntu-latest
@@ -42,7 +42,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review
-          fail_on_error: true
+          fail_level: error
 
   style-check-biome:
     runs-on: ubuntu-latest
@@ -74,5 +74,5 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           locale: "US"
-          fail_on_error: true
+          fail_level: error
           reporter: github-pr-review
