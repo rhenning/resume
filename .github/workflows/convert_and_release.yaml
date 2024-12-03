@@ -1,0 +1,122 @@
+---
+
+name: Convert and Release
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+  workflow_dispatch:
+
+env:
+  srcdir: src
+  srcdoc: professional.md
+  builddir: build
+  prefix: richard_henning-professional_resume
+  title: Professional Resumé - Richard Henning
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pandoc
+        run: |
+          sudo apt-get --assume-yes --quiet update
+          sudo apt-get --assume-yes --quiet install pandoc texlive-latex-extra
+
+      - name: Ensure build directory exists
+        run: mkdir --verbose --parents ./${{ env.builddir }}
+      - name: Convert Markdown sources to desired output formats
+        run: |
+          for docfmt in pdf docx rtf html md ; do
+            pandoc ${{ env.srcdir }}/${{ env.srcdoc }} \
+               --metadata title="Professional Resumé - Richard Henning" \
+               --standalone --output=${{ env.builddir }}/${{ env.prefix }}.${docfmt}
+          done
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: converted-files
+          path: ${{ env.builddir }}/${{ env.prefix }}.*
+
+  release:
+    needs: convert
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: converted-files
+          path: ./artifacts
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: true
+          prerelease: true
+
+      - name: Upload Markdown assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/${{ env.prefix }}.md
+          asset_name: ${{ env.prefix }}.md
+          asset_content_type: text/markdown
+
+      - name: Upload PDF assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/${{ env.prefix }}.pdf
+          asset_name: ${{ env.prefix }}.pdf
+          asset_content_type: application/pdf
+
+      - name: Upload DOCX assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/${{ env.prefix }}.docx
+          asset_name: ${{ env.prefix }}.docx
+          asset_content_type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+
+      - name: Upload RTF assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/${{ env.prefix }}.rtf
+          asset_name: ${{ env.prefix }}.rtf
+          asset_content_type: application/rtf
+
+      - name: Upload HTML assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/${{ env.prefix }}.html
+          asset_name: ${{ env.prefix }}.html
+          asset_content_type: text/html
