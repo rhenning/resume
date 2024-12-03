@@ -9,6 +9,13 @@ on:
       - dev
   workflow_dispatch:
 
+env:
+  srcdir: src
+  srcdoc: professional.md
+  builddir: build
+  prefix: richard_henning-professional_resume
+  title: Professional Resumé - Richard Henning
+
 jobs:
   convert:
     runs-on: ubuntu-latest
@@ -23,22 +30,20 @@ jobs:
           sudo apt-get --assume-yes --quiet install pandoc texlive-latex-extra
 
       - name: Ensure build directory exists
-        run: mkdir --verbose --parents ./build
-
+        run: mkdir --verbose --parents ./${{ env.builddir }}
       - name: Convert Markdown sources to desired output formats
         run: |
-          for docfmt in pdf docx rtf html ; do
-            pandoc src/professional.md --standalone --output=build/richard_henning-professional_resume.${docfmt}
+          for docfmt in pdf docx rtf html md ; do
+            pandoc ${{ env.srcdir }}/${{ env.srcdoc }} \
+               --metadata title="Professional Resumé - Richard Henning" \
+               --standalone --output=${{ env.builddir }}/${{ env.prefix }}.${docfmt}
           done
-
-      - name: Ensure clean & complete Markdown
-        run: pandoc src/professional.md --standalone --output=build/professional.md
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: converted-files
-          path: build/professional.*
+          path: ${{ env.builddir }}/${{ env.prefix }}.*
 
   release:
     needs: convert
@@ -66,43 +71,52 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Upload Release Assets
+      - name: Upload Markdown assets
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifacts/professional.pdf
-          asset_name: professional.pdf
+          asset_path: ./artifacts/${{ env.prefix }}.md
+          asset_name: ${{ env.prefix }}.md
+          asset_content_type: text/markdown
+
+      - name: Upload PDF assets
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/${{ env.prefix }}.pdf
+          asset_name: ${{ env.prefix }}.pdf
           asset_content_type: application/pdf
 
-      - name: Upload Release Assets
+      - name: Upload DOCX assets
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifacts/professional.docx
-          asset_name: professional.docx
-          asset_content_type: |
-            application/vnd.openxmlformats-officedocument.wordprocessingml.document
+          asset_path: ./artifacts/${{ env.prefix }}.docx
+          asset_name: ${{ env.prefix }}.docx
+          asset_content_type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
 
-      - name: Upload Release Assets
+      - name: Upload RTF assets
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifacts/professional.rtf
-          asset_name: professional.rtf
+          asset_path: ./artifacts/${{ env.prefix }}.rtf
+          asset_name: ${{ env.prefix }}.rtf
           asset_content_type: application/rtf
 
-      - name: Upload Release Assets
+      - name: Upload HTML assets
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifacts/professional.html
-          asset_name: professional.html
+          asset_path: ./artifacts/${{ env.prefix }}.html
+          asset_name: ${{ env.prefix }}.html
           asset_content_type: text/html
