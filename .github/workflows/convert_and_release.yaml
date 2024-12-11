@@ -7,6 +7,7 @@ on:
     branches:
       - main
       - dev
+      - v*
   workflow_dispatch:
 
 env:
@@ -69,8 +70,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref }}
-          release_name: v0alpha0-${{ github.ref }}
+          tag_name: release/${{ github.sha }}
+          release_name: release/${{ github.sha }}
           draft: true
           prerelease: true
 
