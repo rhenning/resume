@@ -26,8 +26,8 @@ jobs:
 
       - name: Install pandoc
         run: |
-          sudo apt-get --assume-yes --quiet update
-          sudo apt-get --assume-yes --quiet install pandoc texlive-latex-extra
+          sudo apt-get --assume-yes --quiet=2 update
+          sudo apt-get --assume-yes --quiet=2 install pandoc texlive-latex-extra
 
       - name: Ensure build directory exists
         run: mkdir --verbose --parents ./${{ env.builddir }}
