@@ -25,11 +25,12 @@ leaders from across the newly-combined WBD organization. Our team charter
 tasks us with steering design, implementation, integration, and promotion of
 multitenant infrastructure, compute, delivery, database, messaging,
 observability, and networking tools. These platform tools lay the foundation
-for successful delivery of WBD's flagship entertainment products – such as _Max_ – at global scale.
+for successful delivery of WBD's flagship entertainment products – such as _Max_
+– at global scale.
 
 ## WBD Max
 
-* Tech includes AWS Transit Gateway, Landing Pad (?), EKS,
+* Tech includes AWS Transit Gateway, Control Tower, EKS,
 * Kubernetes
 * Apache Kafka / Confluent / MaaS / Event-based APIs & microservices
 * Terraform & Terragrunt

@@ -58,7 +58,7 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
-          fail_on_error: true
+          fail_level: error
 
   style-check-misspell:
     runs-on: ubuntu-latest
@@ -73,6 +73,6 @@ jobs:
         uses: reviewdog/action-misspell@v1
         with:
           github_token: ${{ secrets.github_token }}
-          locale: "US"
+          locale: US
           fail_level: error
           reporter: github-pr-review

@@ -3,13 +3,13 @@
 ## Contact
 
 **Richard Henning**  
-1307 Marlborough St  
+1307 Marlborough St.  
 Philadelphia, PA 19125
 
 <tel:+16107375134>  
 <mailto:rphenning@pm.me>  
-<linkedin:https://linked.in/rhenning>  
-<github:https://github.com/rhenning>
+linkedin:<https://linkedin.com/in/rphenning>  
+github:<https://github.com/rhenning>  
 
 ## Professional Experience
 
@@ -18,93 +18,130 @@ Principal Engineer, [**_Max_**](max.com)
 2022 - 2024
 
 I am a Software & Platform Engineer-Architect working closely with tech leaders
-from across the newly-combined WBD organization. Our team partners with service
-engineering teams in order to promote, integrate with, and steer the design and
-implementation of multitenant cloud infrastructure, compute, delivery, data,
-messaging, observability, and networking tools. These platform tools lay the
-foundation for successful delivery of WBD's flagship entertainment products –
-such as _Max_ – at global scale.
+from across the newly-combined WBD organization. Our _Cloud Engineering &
+Automation_ group partners with service engineering teams in order to promote,
+integrate with, and steer design and implementation of multitenant cloud
+infrastructure, compute, delivery, data, messaging, observability, and
+networking tools. These platform tools lay the foundation for successful
+delivery of WBD's flagship entertainment products – such as **_Max_** – at
+global scale.
 
 * Advocate for platform-as-product north star, inner-source, collective
-  platform ownership, and software stewardship; I often act in a de facto
-  product owner role, elevating the asks of our internal customer-colleagues
+  platform ownership, and software stewardship; I serve as a de facto
+  product owner, elevating the asks of our internal customer-colleagues
   during design and planning sessions.
 * Leader of collaborative programming, code review, and architecture sessions
-  with cross-org engineering directors, leads, and architects.
+  with cross-organization engineering directors, leads, and architects.
 * Collaborator and advisor across a number of specialty teams within
   our organization, including Infrastructure Engineering, Cluster Engineering,
   Site Reliability Engineering, Database Engineering, Release & Delivery
   Engineering, Boundary Services, and Asynchronous Messaging Services.
-* Liaison between numerous business stakeholders & partners, often facilitating
-  communication and visual aide needed to solve thorny cross-provider issues.
-* Longer-term focus on successful buildout of a global, multitenant, security
-  and privacy compliant asynchronous messaging platform and provisioning DSL.
-  This platform pillar supports a number of buffered, reliable cross-service
-  communication needs, from event-based microservices to observability tools.
-  The tech stack includes components from Apache Kafka, AWS MSK, Confluent,
-  Kubernetes, Terraform, AWS Private Link & Transit Gateway, Prometheus,
-  Grafana, and Protocol Buffers, with bindings and tools written in Go and
-  Python.
-* Proud to play part of a team empowering:
-  * World-class entertainment for hundreds of millions of loyal customers across
-    the globe.
+* Liaison between numerous business stakeholders & partners, facilitating
+  communication and visual aid needed to solve thorny cross-provider issues.
+* Long-term focus on building a global, multitenant, security & privacy
+  compliant asynchronous messaging platform and provisioning DSL. This
+  platform pillar supports buffered & reliable cross-service communications,
+  including event-based microservices & observability tools. The tech stack
+  contains components of Apache Kafka, AWS MSK, Confluent, Kubernetes,
+  Terraform, AWS Transit Gateway & Private Link, Prometheus, Grafana, and
+  Protocol Buffers, with bindings and tools authored in Go and Python.
+* Proud to play as part of a team empowering:
+  * World-class entertainment enjoyed by hundreds of millions of loyal
+    customers around the globe.
   * Cloud services used by thousands of Software, Site Reliability, and Data
     Engineers.
   * Hosting for hundreds of unique & diverse business-critical services.
   * Operations & Observability Tools used by 70+ teams of stakeholders across
-    Engineering, Operations, and Finance disciplines.
+    Engineering, Operations, and Finance.
   * Resilient Architecture and Traffic Management across 10+ discrete zones.
-  * Reach into 3+ major markets – first in US, fast-followed by LatAm & EMEA.
+  * Reach into 3+ global markets – N. America fast-followed by LatAm & EMEA.
   * One of the largest entertainment firms in the world.
 
 **WarnerMedia** – Philadelphia, US  
 Principal Software Engineer, [**_HBO Max_**](hbomax.com)  
 2021 - 2022
 
-As a member of the Strategic Global Infrastructure group, our team was
-responsible for ensuring that day-to-day changes to live cloud infrastructure,
-security policy, networking, compute clusters, and delivery tools were
-delivered safely and in accordance with industry best practices.
+As a member of the _Strategic Global Infrastructure_ group, I was responsible
+for ensuring that day-to-day changes and improvements applied to live cloud
+accounts, security policy, networking, infrastructure, compute clusters, and
+CI/CD tools were delivered without customer impact and in accordance with
+industry best practices.
 
-*
+* Reduced technical debt and fragility by refactoring shared Terraform modules
+  and integrations used by teams across the organization. Tight coupling to
+  existing interfaces and dependencies meant that many could not be upgraded
+  without impact to platform foundations with a large blast radius, such
+  as AWS Control Tower, IAM, Transit Gateways, VPCs, Route Tables, ACLs, TLS,
+  DNS, and Global Accelerator endpoints. Coupling was relaxed with design
+  patterns that favored module injection to nesting and data structures with
+  connascence of name over position. To inspire confidence in these changes, I
+  built **`tfmgen`** – an automated Terraform state migration generator.
+  `tfmgen` analyzes each unique project's TF plan output and its state backend,
+  backing up then modifying state as needed in order to achieve idempotent
+  `plan` and `apply` operations, de-risking an otherwise nerve-wracking
+  experience by turning it into a clear no-op.
+* Led a tiger team that planned and executed buildout of HBO Max's cloud
+  network and compute footprint in Europe.
+* Migrated live workloads into new public-cloud accounts and Kubernetes clusters
+  in order to take advantage of improved pricing negotiations.
+* Automated post-provisioning, pre-flight acceptance testing of new cloud POPs
+  with tools based on Terratest, AWS Lambda, and `infratest`. This directly
+  contributed to improved accuracy of estimates and success of the previous two
+  initiatives by reducing rework associated with provisioning
+  and configuring foundational IAM, network, and compute elements when
+  deploying services into new cloud accounts, regions, and clusters.
+* Daily code reviews, pair programming, analysis of Terraform and Kubernetes
+  plans, and architectural design sessions with colleagues from Service
+  Engineering teams.
+* Participated in production on-call rotation shared with SRE, Root Cause
+  Analysis, and After Action Review of incidents affecting _HBO Max_. After 20+
+  years building and operating business-critical systems, I am adamant about
+  limiting stress, toil, disruption, cognitive load, alert fatigue, tribal
+  knowledge, and heroics commonly associated with on-call.
+* Spearheaded grassroots meetup of the _Better Delivery_ guild, where colleagues
+  from across the organization were invited to share their experiences and
+  vision of how testing, infrastructure, and service delivery workflows could
+  be improved.
 
 **Comcast** – Philadelphia, US  
 Principal Software Engineer, X1 Video Platform & Xfinity Stream  
 2016 - 2021
 
 I was embedded as a cloud and infrastructure-as-code specialist within a cross-
-functional team of software engineers responsible for end-to-end development,
-infrastructure, delivery, operations, and support of the XVP and Xfinity Stream
-APIs and supporting services. These APIs power video discovery and playback
-experiences for tens of millions of customers and business partners with Smart
-TVs, mobile devices, web browsers, and integrated products such as Roku, Xumo
-and Sky Glass.
+functional team of software engineers. Our team was responsible for end-to-end
+development, infrastructure, delivery, operations, and support of the XVP and
+Xfinity Stream APIs and supporting services. These APIs power video discovery
+and playback experiences for tens of millions of customers and business
+partners with Smart TVs, mobile devices, web browsers, and integrated products
+such as Roku, Xumo, and Sky Glass.
 
 * Led iterative migration of live production APIs at scale – from on-premise
   managed hardware to hybrid-cloud to all-AWS public cloud – over an extended
   time period of continuous customer growth.
 * Co-designed, implemented, and operated a global software load balancer, API
   gateway, and QoS system. It virtually eliminated high-severity incidents due
-  to data center or app server failure and facilitated live capacity planning
-  exercises. Wrote acceptance test tools and a control plane API in Go.
-* Advisor on topics including resilient Hybrid Cloud Architecture, Cloud
+  to data center, app server, and load-balancer failure and allowed the team to
+  run live capacity planning exercises. I authored acceptance test tools and a
+  control plane API in Go, as well as Terraform modules for managing cloud
+  infrastructure and integrating change delivery with Concourse CI.
+* Advisor on topics such as resilient Hybrid Cloud Architecture, Cloud
   Networking and Security, Operations, Continuous Delivery, Infrastructure as
-  Code, Infrastructure Testing, Capacity Planning and AutoScaling, and Global
+  Code, Infrastructure Testing, Capacity Planning, Auto-Scaling, and Global
   Server Load Balancing.
-* Participated in Lead Developer, Solutions Architect, and Project Manager roles
-  for Platform Team properties including Global Load Balancer, API Gateway,
-  Continuous Delivery, and Cloud Hosting platforms.
-* Performed daily code reviews, enjoys pair programming, hands-on collaboration,
+* Lead Engineer, Solutions Architect, and Project Manager for Platform Team
+  properties including Global Load Balancer, API Gateway, Continuous Delivery,
+  and Cloud Hosting platforms.
+* Participated in daily code reviews, pair programming, hands-on collaboration
   and mentoring of junior colleagues.
-* Met with Finance for quarterly cloud budget reviews.  
-* Organization-wide co-facilitator of DevSecOps Guild and Cloud Security Liaison
+* Met with Finance for quarterly cloud budget reviews and forecasting.  
+* Organization-wide co-facilitator of DevSecOps Guild and Security Liaison.
 
 **Weblinc Commerce** – Philadelphia, US  
 Operations Engineer, Information Technology  
 2014 - 2016
 
 * Lead Engineer on a team of 7, responsible for IT Operations, Infrastructure,
-  Site Reliability, Security, Compliance and Delivery for 15+ eCommerce project
+  Site Reliability, Security, Compliance, and Delivery for 15+ eCommerce project
   development teams serving 50+ clients.
 * Worked closely with CTO and IT Manager to create mentorship opportunities,
   design and implement tools and processes to scale the Ops team from a single
@@ -117,7 +154,8 @@ Operations Engineer, Information Technology
   for a client’s multi-store installation. We securely integrated SSL certificate
   and key management into each member’s store, at a cost and scale that would
   have been impossible using standard cloud-based approaches to TLS. Tech
-  included Rails-API, Hashicorp Vault & Consul, PostgreSQL, HAProxy and Nginx.
+  included Rails-API, Hashicorp Vault & Consul, PostgreSQL, Opscode Chef,
+  HAProxy and Nginx.
 * Implemented CI/CD tests for infrastructure and configuration management code.
 * Pair programming, code reviews, and mentoring of junior colleagues; Close
   collaboration with team leads and project managers of implementation teams.
@@ -149,10 +187,11 @@ Operations Engineer, DevOps Lead
   provision their own complete development stack.
 * Improved DR and scaling of MongoDB by implementing snapshot-based backup and
   restore. This resulted in reliable, fast restores and the ability to pre-seed
-  new replicas so we could quickly add capacity.  Wrote a cache-warming tool
-  (<https://github.com/rhenning/bunsen>) to facilitate pre-fetching data from
-  backups to improve performance of new replicas.
-* Improved Chef development workflow by removing internal forks of community
+  new replicas so we could quickly add capacity. I wrote
+  [**`bunsen`**](https://github.com/rhenning/bunsen) – a cache-warming tool
+  to assist with pre-fetching data from backups to improve performance of new
+  MongoDB replicas.
+* Streamlined Chef development workflow by removing internal forks of community
   cookbooks and implementing cookbook tests with Test Kitchen, ServerSpec, and
   MiniTest.
 * Developed provisioning and command-and-control tools centered around Chef
@@ -173,42 +212,42 @@ IT Operations, Systems Engineering, Build/Release Engineering
   MIT Kerberos, OpenLDAP, SSH, TACACS+, RADIUS, SASL, rsyslog and Simple Event
   Correlator (SEC).
 * Worked with developers to design and implement virtualization stacks for
-  several projects, based on XenServer and VMware clustering, iSCSI mass storage,
-  802.1Q VLANs. Network resource management and build automation were streamlined
-  by combining Cobbler/Kickstart with the VMware & XenServer API tools.  A
-  dedicated management network allowed for lights-out management of failed
-  systems via IPMI, and also backups.
+  several projects, based on XenServer and VMware clustering, iSCSI mass
+  storage, and 802.1Q VLANs. Network resource management and build automation
+  were streamlined by combining Cobbler/Kickstart with the VMware & XenServer
+  API tools. A dedicated management network allowed for lights-out management of
+  failed systems via IPMI, and also backups.
 * Led developers in migrating all physical data center resources to AWS, which
   lowered operating expenses, eliminated sysadmin trips to the data center, and
-  greatly reduced turnaround time for new infrastructure -- from weeks to under
+  greatly reduced turnaround time for new infrastructure – from weeks to under
   an hour in most cases. Cloud automation and resource management were
   implemented with AWS CLI tools and Chef.
 * Automated product build/tag/backup/deploy process, virtually eliminating
-  downtime associated with production code releases. Tools used included Ruby,
-  Git, Net-SSH and Chef.
+  downtime associated with production code releases. Tech included Ruby,
+  Git, `Net::SSH`, and Opscode Chef.
 
 ## Additional Skills
 
 * Early DevSecOps, Infrastructure-as-Code, and SRE advocate
 * Operations and on-call experience supporting critical services and
   infrastructure
-* Scaling strategy and capacity planning for 24x7 production applications
-* Hybrid-cloud Infrastructure Services, APIs, & SDKs (AWS, Kubernetes, OpenStack,
+* Scaling strategy and capacity planning for 24x7 global production applications
+* Hybrid Cloud Infrastructure Services, APIs & SDKs (AWS, Kubernetes, OpenStack,
   Cloud Foundry)
 * Configuration Management, Provisioning and test tools (Ansible & Molecule, AWS
-  CloudFormation, HashiCorp Terraform, Packer, Consul and Vault, Terragrunt &
+  CloudFormation, HashiCorp Terraform, Packer, Consul & Vault, Terragrunt &
   Terratest, Docker & Compose, Chef, Test Kitchen, Goss)
-* Global Traffic Management, DNS, Ingress & Edge strategy (AWS Global Accelerator &
-  Route 53, Akamai GTM, F5, BIND, djbdns, PowerDNS)
+* Global Traffic Management, Advanced DNS, Ingress & Edge strategy (AWS
+  Global Accelerator & Route 53, Akamai GTM, Anycast, F5, BIND, djbdns, PowerDNS)
 * GNU/Linux (Arch, Debian/Ubuntu, RedHat/CentOS/AL2), Windows Server, MacOS
   Administration
-* Revision control (Git, GitHub, Bitbucket/Stash)
+* Networking (AWS VPC & Transit Gateway, Ethernet, TCP/IP, VLAN, VPN, QoS,
+  Linux IPTables/IPRoute2)
+* Revision control (Git, GitHub, Bitbucket/Stash, Subversion)
 * Golang, Python, Ruby, Rails, TDD, Unix shell scripting.
 * Continuous Integration and Delivery (GitHub Actions, ConcourseCI, Jenkins,
   TravisCI, Bamboo, TeamCity)
 * HAProxy, Nginx, Apache web servers and common modules
-* Networking (AWS VPC & Transit Gateway, Ethernet, TCP/IP, VLAN, VPN, QoS,
-  Linux IPTables/IPRoute2)
 * Operational Visibility (Prometheus, Grafana, Graphite, New Relic,
   AWS CloudWatch, Splunk, PagerDuty)
 * NoSQL and SQL databases and ElasticSearch
@@ -222,24 +261,33 @@ IT Operations, Systems Engineering, Build/Release Engineering
 
 ## Code Samples
 
-* My resumé is generated from source code and templates stored in [a GitHub repository](https://github.com/rhenning/resume), continuously integrated and released by a [GitHub Actions pipeline](https://github.com/rhenning/resume/actions).
-* [**`terrajux`**](<https://github.com/rhenning/terrajux>) is a CLI tool written
-in Go that was created to help my team quickly home in on exactly what code
-changed between two different releases of a Terraform "root" module and all
-transitive module dependencies.
-* <https://github.com/rhenning/x509_sleuth>
-* <https://github.com/rhenning/bunsen>
+* My resumé is generated from source code and templates stored in  
+  [a GitHub repository](https://github.com/rhenning/resume). Pull Requests
+  are continuously integrated and validated, then released upon merge by a  
+  [GitHub Actions pipeline](https://github.com/rhenning/resume/actions).
+* [**`terrajux`**](<https://github.com/rhenning/terrajux>) is a CLI tool
+  authored in Go, written to help members of my team quickly
+  home-in on _exactly_ what code changed between two releases of a Terraform
+  root module and all transitive dependencies.
+* [**`x509_sleuth`**](<https://github.com/rhenning/x509_sleuth>) is a
+  lightweight remote network recon tool for SSL certificates, built to scan
+  network ranges, identify TLS-protected endpoints, and extract fields of
+  certificates found in a script-friendly format, useful for auditing purposes.
+* [**`bunsen`**](<https://github.com/rhenning/bunsen>) is a cache-warming and
+  prefetch tool, handy for use in ops on-call automation when recycling or
+  scaling the nodes of a MongoDB cluster.
 * Contributions to Terraform Core, Terraform’s AWS Provider, and other
   open-source projects
 
 ## Extracurriculars
 
-* Volunteer and technology board advisor at  [Fishtown Playschool](https://www.fishtownplayschool.org/faq)
-  * FPS is a 501(c) non-profit coop preschool.
+* Volunteer and technology board advisor at  
+  [Fishtown Playschool](https://www.fishtownplayschool.org/faq)  
+  – a 501(c) non-profit preschool cooperative
 * Maker and Creative
 * Electronic musician, synthesist, and project studio owner
 * Synthesizer design, instrument repair, modifications, and electronics rework
-* Interest in embedded systems and information security
+* Interest in embedded systems, IoT, amateur radio, and information security
 * Audio engineering & high-performance Linux multimedia workstations
 
 ---
