@@ -59,6 +59,9 @@ jobs:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           fail_level: error
+          ## `fail_on_error` is deprecated but used to suppress warnings.
+          ## it can be removed when the action is updated to >=v2.
+          fail_on_error: false
 
   style-check-misspell:
     runs-on: ubuntu-latest
