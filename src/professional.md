@@ -157,20 +157,11 @@ Operations Engineer, Information Technology
   included Rails-API, Hashicorp Vault & Consul, PostgreSQL, Opscode Chef,
   HAProxy and Nginx.
 * Implemented CI/CD tests for infrastructure and configuration management code.
-* Pair programming, code reviews, and mentoring of junior colleagues; Close
+* Pair programming, code reviews, and mentoring of junior colleagues; close
   collaboration with team leads and project managers of implementation teams.
-* Federated authentication, authorization and auditing across 3 data centers,
-  30 AWS accounts and about 500 systems.
-
-<!--
-* AWS
-* IIS
-* Hybrid
-* PCI/DSS
-* DevOps / Dev advocate in IT
-* TLS/LBaaS
-* Custom Consulting / prof svcs
--->
+* Designed and implemented federated authentication, authorization, and auditing
+  across 3 data centers, 30+ AWS accounts, and ~500 systems.
+* 1-on-1 billable consulting and professional services with clients as needed.
 
 **The Neat Company** – Philadelphia, US  
 Operations Engineer, DevOps Lead  
@@ -245,8 +236,8 @@ IT Operations, Systems Engineering, Build/Release Engineering
   Linux IPTables/IPRoute2)
 * Revision control (Git, GitHub, Bitbucket/Stash, Subversion)
 * Golang, Python, Ruby, Rails, TDD, Unix shell scripting.
-* Continuous Integration and Delivery (GitHub Actions, ConcourseCI, Jenkins,
-  TravisCI, Bamboo, TeamCity)
+* Continuous Integration and Delivery (GitHub Actions, Concourse CI, Jenkins,
+  Travis CI, Bamboo, TeamCity)
 * HAProxy, Nginx, Apache web servers and common modules
 * Operational Visibility (Prometheus, Grafana, Graphite, New Relic,
   AWS CloudWatch, Splunk, PagerDuty)
@@ -274,8 +265,8 @@ IT Operations, Systems Engineering, Build/Release Engineering
   network ranges, identify TLS-protected endpoints, and extract fields of
   certificates found in a script-friendly format, useful for auditing purposes.
 * [**`bunsen`**](<https://github.com/rhenning/bunsen>) is a cache-warming and
-  prefetch tool, handy for use in ops on-call automation when recycling or
-  scaling the nodes of a MongoDB cluster.
+  prefetch tool, handy for use in ops on-call automation when scaling or
+  recycling nodes in a MongoDB cluster.
 * Contributions to Terraform Core, Terraform’s AWS Provider, and other
   open-source projects
 
@@ -287,7 +278,7 @@ IT Operations, Systems Engineering, Build/Release Engineering
 * Maker and Creative
 * Electronic musician, synthesist, and project studio owner
 * Synthesizer design, instrument repair, modifications, and electronics rework
-* Interest in embedded systems, IoT, amateur radio, and information security
+* Interests in embedded systems, IoT, amateur radio, and information security
 * Audio engineering & high-performance Linux multimedia workstations
 
 ---
