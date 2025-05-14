@@ -1,6 +1,6 @@
 # Richard Henning's Résumé
 
-## Contact
+## Contact Information
 
 **Richard Henning**  
 1307 Marlborough St.  
@@ -265,15 +265,15 @@ IT Operations, Systems Engineering, Build/Release Engineering
 * Contributions to Terraform Core, Terraform’s AWS Provider, and other
   open-source projects
 
-## Extracurriculars
+## Areas of Interest
 
-* Volunteer and technology board advisor at  
+* Volunteer and technology board advisor at
   [Fishtown Playschool](https://www.fishtownplayschool.org/faq)  
   – a 501(c) non-profit preschool cooperative
 * Maker and Creative
 * Electronic musician, synthesist, and project studio owner
 * Synthesizer design, instrument repair, modifications, and electronics rework
-* Interests in embedded systems, IoT, amateur radio, and information security
+* Embedded systems, IoT, amateur radio, and information security
 * Audio engineering & high-performance Linux multimedia workstations
 
 ---
