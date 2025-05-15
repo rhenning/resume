@@ -58,7 +58,10 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
-          fail_on_error: true
+          fail_level: error
+          ## `fail_on_error` is deprecated but used to suppress warnings.
+          ## it can be removed when the action is updated to >=v2.
+          fail_on_error: false
 
   style-check-misspell:
     runs-on: ubuntu-latest
@@ -73,6 +76,6 @@ jobs:
         uses: reviewdog/action-misspell@v1
         with:
           github_token: ${{ secrets.github_token }}
-          locale: "US"
+          locale: US
           fail_level: error
           reporter: github-pr-review
