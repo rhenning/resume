@@ -25,20 +25,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install pandoc
-        run: |
-          sudo apt-get --assume-yes --quiet=2 update
-          sudo apt-get --assume-yes --quiet=2 install pandoc texlive-latex-extra
-
       - name: Ensure build directory exists
         run: mkdir --verbose --parents ./${{ env.builddir }}
-      - name: Convert Markdown sources to desired output formats
-        run: |
-          for docfmt in pdf docx rtf html md ; do
-            pandoc ${{ env.srcdir }}/${{ env.srcdoc }} \
-               --metadata title="Professional Resumé - Richard Henning" \
-               --standalone --output=${{ env.builddir }}/${{ env.prefix }}.${docfmt}
-          done
+
+      - name: Convert Markdown to PDF
+        uses: docker://pandoc/latex:3
+        with:
+          args: >-
+            --standalone
+            --output=${{ env.builddir }}/${{ env.prefix }}.pdf
+            ${{ env.srcdir }}/${{ env.srcdoc }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
