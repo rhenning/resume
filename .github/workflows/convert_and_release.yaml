@@ -16,6 +16,7 @@ env:
   builddir: build
   prefix: richard_henning-professional_resume
   title: Professional Resumé - Richard Henning
+  pandoc_img: pandoc/latex:3 &pandoc_img
 
 jobs:
   convert:
@@ -29,7 +30,7 @@ jobs:
         run: mkdir --verbose --parents ./${{ env.builddir }}
 
       - name: Convert Markdown to PDF
-        uses: docker://pandoc/latex:3
+        uses: docker://*pandoc_img
         with:
           args: >-
             --standalone
@@ -37,7 +38,7 @@ jobs:
             ${{ env.srcdir }}/${{ env.srcdoc }}
 
       - name: Convert Markdown to DOCX
-        uses: docker://pandoc/latex:3
+        uses: docker://*pandoc_img
         with:
           args: >-
             --standalone
@@ -45,7 +46,7 @@ jobs:
             ${{ env.srcdir }}/${{ env.srcdoc }}
 
       - name: Convert Markdown to RTF
-        uses: docker://pandoc/latex:3
+        uses: docker://*pandoc_img
         with:
           args: >-
             --standalone
@@ -53,7 +54,7 @@ jobs:
             ${{ env.srcdir }}/${{ env.srcdoc }}
 
       - name: Convert Markdown to HTML
-        uses: docker://pandoc/latex:3
+        uses: docker://*pandoc_img
         with:
           args: >-
             --standalone
@@ -61,12 +62,26 @@ jobs:
             ${{ env.srcdir }}/${{ env.srcdoc }}
 
       - name: Convert Markdown to Markdown
-        uses: docker://pandoc/latex:3
+        uses: docker://*pandoc_img
         with:
           args: >-
             --standalone
             --output=${{ env.builddir }}/${{ env.prefix }}.md
             ${{ env.srcdir }}/${{ env.srcdoc }}
+
+      - name: Produce build metadata
+        shell: bash
+        run: |
+          cat <<-_END
+          {
+            github: {
+              server_url: "${{ github.server_url }}",
+              repository: "${{ github.repository }}",
+              ref: "${{ github.ref }}",
+              sha: "${{ github.sha }}"
+            }
+          }
+          _END > ${{ env.builddir }}/BUILDMETA.json
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
@@ -152,3 +167,13 @@ jobs:
           asset_path: ./artifacts/${{ env.prefix }}.html
           asset_name: ${{ env.prefix }}.html
           asset_content_type: text/html
+
+      - name: Upload build metadata
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/BUILDMETA.json
+          asset_name: BUILDMETA.json
+          asset_content_type: application/json
