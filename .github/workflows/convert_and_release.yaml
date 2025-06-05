@@ -71,16 +71,15 @@ jobs:
       - name: Produce build metadata
         shell: bash
         run: |
-          cat <<-_END
-          {
-            github: {
-              server_url: "${{ github.server_url }}",
-              repository: "${{ github.repository }}",
-              ref: "${{ github.ref }}",
-              sha: "${{ github.sha }}"
+          cat <<-__END__ > ${{ env.builddir }}/BUILDMETA.json
+          { "github": {
+              "server_url": "${{ github.server_url }}",
+              "repository": "${{ github.repository }}",
+              "ref": "${{ github.ref }}",
+              "sha": "${{ github.sha }}"
             }
           }
-          _END > ${{ env.builddir }}/BUILDMETA.json
+          __END__
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
