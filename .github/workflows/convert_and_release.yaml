@@ -21,14 +21,49 @@ jobs:
   convert:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ github.workspace }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Ensure build directory exists
-        run: mkdir --verbose --parents ./${{ env.builddir }}
+        run: mkdir --verbose --parents "./${{ env.builddir }}"
 
-      - name: Convert Markdown to PDF
+      - name: Get additional git repository metatdata
+        id: get_repometa
+        run: |
+          echo "short_sha=$( git rev-parse --short ${{ github.sha }} )" >> $GITHUB_OUTPUT
+
+      - name: Generate build metadata
+        run: |
+          cat <<-__END__ > "${{ env.builddir }}/BUILDMETA.json"
+          {
+            "github": {
+              "server_url": "${{ github.server_url }}",
+              "repository": "${{ github.repository }}",
+              "ref": "${{ github.ref }}",
+              "sha": "${{ github.sha }}",
+              "short_sha": "{{ steps.get_repometa.outputs.short_sha }}"
+            }
+          }
+          __END__
+
+      - name: Convert source to GitHub-Flavored Markdown
+        uses: docker://pandoc/extra:3
+        with:
+          args: >-
+            --standalone
+            --from gfm
+            --to gfm
+            --metadata version="${{ steps.get_repometa.outputs.short_sha }}"
+            --output="./${{ env.builddir }}/${{ env.prefix }}.md"
+            "./${{ env.srcdir }}/${{ env.srcdoc }}"
+
+      - name: Convert source to PDF
         uses: docker://pandoc/extra:3
         with:
           args: >-
@@ -36,72 +71,47 @@ jobs:
             --template eisvogel
             --from gfm
             --metadata title="${{ env.title }}"
-            --output=${{ env.builddir }}/${{ env.prefix }}.pdf
-            ${{ env.srcdir }}/${{ env.srcdoc }}
+            --metadata version="${{ steps.get_repometa.outputs.short_sha }}"
+            --output="./${{ env.builddir }}/${{ env.prefix }}.pdf"
+            "./${{ env.srcdir }}/${{ env.srcdoc }}"
 
-      - name: Convert Markdown to DOCX
+      - name: Convert source to DOCX
         uses: docker://pandoc/extra:3
         with:
           args: >-
             --standalone
             --from gfm
             --metadata title="${{ env.title }}"
-            --output=${{ env.builddir }}/${{ env.prefix }}.docx
-            ${{ env.srcdir }}/${{ env.srcdoc }}
+            --metadata version="${{ steps.get_repometa.outputs.short_sha }}"
+            --output="./${{ env.builddir }}/${{ env.prefix }}.docx"
+            "./${{ env.srcdir }}/${{ env.srcdoc }}"
 
-      - name: Convert Markdown to RTF
+      - name: Convert source to HTML
         uses: docker://pandoc/extra:3
         with:
           args: >-
             --standalone
             --from gfm
             --metadata title="${{ env.title }}"
-            --output=${{ env.builddir }}/${{ env.prefix }}.rtf
-            ${{ env.srcdir }}/${{ env.srcdoc }}
-
-      - name: Convert Markdown to HTML
-        uses: docker://pandoc/extra:3
-        with:
-          args: >-
-            --standalone
-            --from gfm
-            --metadata title="${{ env.title }}"
-            --output=${{ env.builddir }}/${{ env.prefix }}.html
-            ${{ env.srcdir }}/${{ env.srcdoc }}
-
-      - name: Convert Markdown to Markdown
-        uses: docker://pandoc/extra:3
-        with:
-          args: >-
-            --standalone
-            --from gfm
-            --to gfm
-            --output=${{ env.builddir }}/${{ env.prefix }}.md
-            ${{ env.srcdir }}/${{ env.srcdoc }}
-
-      - name: Produce build metadata
-        shell: bash
-        run: |
-          cat <<-__END__ > ${{ env.builddir }}/BUILDMETA.json
-          {
-            "github": {
-              "server_url": "${{ github.server_url }}",
-              "repository": "${{ github.repository }}",
-              "ref": "${{ github.ref }}",
-              "sha": "${{ github.sha }}"
-            }
-          }
-          __END__
+            --metadata version="${{ steps.get_repometa.outputs.short_sha }}"
+            --output="./${{ env.builddir }}/${{ env.prefix }}.html"
+            "./${{ env.srcdir }}/${{ env.srcdoc }}"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: converted-files
+          name: ${{ env.prefix }}-artifacts-${{ steps.get_repometa.outputs.short_sha }}
           path: ${{ env.builddir }}/*
 
   release:
     needs: convert
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ github.workspace }}
+
     #if: github.ref == 'refs/heads/main'
 
     permissions:
@@ -111,10 +121,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Get additional git repository metatdata
+        id: get_repometa
+        run: |
+          echo "short_sha=$( git rev-parse --short ${{ github.sha }} )" >> $GITHUB_OUTPUT
+
       - name: Download artifacts
         uses: actions/download-artifact@v4
         with:
-          name: converted-files
+          name: ${{ env.prefix }}-artifacts-${{ steps.get_repometa.outputs.short_sha }}
           path: ./artifacts
 
       - name: Create GitHub Release
@@ -123,8 +138,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: release/${{ github.sha }}
-          release_name: release/${{ github.sha }}
+          tag_name: release/${{ steps.get_repometa.outputs.short_sha }}
+          release_name: release/${{ steps.get_repometa.outputs.short_sha }}
           draft: true
           prerelease: true
 
@@ -157,16 +172,6 @@ jobs:
           asset_path: ./artifacts/${{ env.prefix }}.docx
           asset_name: ${{ env.prefix }}.docx
           asset_content_type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
-
-      - name: Upload RTF assets
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifacts/${{ env.prefix }}.rtf
-          asset_name: ${{ env.prefix }}.rtf
-          asset_content_type: application/rtf
 
       - name: Upload HTML assets
         uses: actions/upload-release-asset@v1
