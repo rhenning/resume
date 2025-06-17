@@ -15,7 +15,7 @@ env:
   srcdoc: professional.md
   builddir: build
   prefix: richard_henning-professional_resume
-  title: Professional Résumé - Richard Henning
+  title: Professional Résumé – Richard Henning
 
 jobs:
   convert:
