@@ -112,8 +112,6 @@ jobs:
         shell: bash
         working-directory: ${{ github.workspace }}
 
-    #if: github.ref == 'refs/heads/main'
-
     permissions:
       contents: write
 
