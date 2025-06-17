@@ -47,7 +47,7 @@ jobs:
               "repository": "${{ github.repository }}",
               "ref": "${{ github.ref }}",
               "sha": "${{ github.sha }}",
-              "short_sha": "{{ steps.get_repometa.outputs.short_sha }}"
+              "short_sha": "${{ steps.get_repometa.outputs.short_sha }}"
             }
           }
           __END__
