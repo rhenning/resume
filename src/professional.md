@@ -17,9 +17,10 @@ github:<https://github.com/rhenning>
 Principal Engineer, [**_Max_**](max.com)  
 2022–2024
 
-I am a Software & Platform Engineer-Architect working closely with tech leaders
-from across the newly-combined WBD organization. Our _Cloud Engineering &
-Automation_ group partners with service engineering teams in order to promote,
+Throughout my time at Warner Bros. Discovery, I was employed as a Software and
+Platform Engineer-Architect in the _Cloud Engineering & Automation_ (CEA) group,
+working hand-in-hand with other tech leaders from across the newly-combined WBD
+organization. CEA partnered with service engineering teams in order to promote,
 integrate with, and steer design and implementation of multi-tenant cloud
 infrastructure, compute, delivery, data, messaging, observability, and
 networking tools. These platform tools lay the foundation for successful
