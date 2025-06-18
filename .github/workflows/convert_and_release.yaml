@@ -14,6 +14,7 @@ env:
   srcdir: src
   srcdoc: professional.md
   builddir: build
+  papersize: letter
   prefix: richard_henning-professional_resume
   title: Professional Résumé – Richard Henning
 
@@ -70,6 +71,7 @@ jobs:
             --standalone
             --template eisvogel
             --from gfm
+            --variable papersize="${{ env.papersize }}"
             --metadata title="${{ env.title }}"
             --metadata version="${{ steps.get_repometa.outputs.short_sha }}"
             --output="./${{ env.builddir }}/${{ env.prefix }}.pdf"
