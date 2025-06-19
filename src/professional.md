@@ -287,6 +287,6 @@ _Professional references and additional work history are available upon request.
 [github.com/rhenning/resume/actions]: https://github.com/rhenning/resume/actions
 [github.com/rhenning/terrajux]: https://github.com/rhenning/terrajux
 [github.com/rhenning/x509_sleuth]: https://github.com/rhenning/x509_sleuth
-[github.com/rhenning/bunsen]: https://github.com/rhenning/bunsen>
+[github.com/rhenning/bunsen]: https://github.com/rhenning/bunsen
 [github.com/HBOCodeLabs/infratest]: https://github.com/HBOCodeLabs/infratest
 [fishtownplayschool.org/faq]: https://fishtownplayschool.org/faq
