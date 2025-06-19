@@ -1,4 +1,4 @@
-# Richard Henning–Professional Résumé
+# Richard Henning – Professional Résumé
 
 ## Contact Information
 
