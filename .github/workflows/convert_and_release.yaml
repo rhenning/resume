@@ -14,9 +14,7 @@ env:
   srcdir: src
   srcdoc: professional.md
   builddir: build
-  papersize: letter
   prefix: richard_henning-professional_resume
-  title: Professional Résumé – Richard Henning
 
 jobs:
   convert:
@@ -37,7 +35,10 @@ jobs:
       - name: Get additional git repository metadata
         id: get_repometa
         run: |
-          echo "short_sha=$( git rev-parse --short ${{ github.sha }} )" >> $GITHUB_OUTPUT
+          cat <<-__END__ >> "$GITHUB_OUTPUT"
+          short_sha="$( git rev-parse --short ${{ github.sha }} )"
+          date="$( date --iso8601=seconds --utc | tr -d ':-' )"
+          __END__
 
       - name: Generate build metadata
         run: |
@@ -48,7 +49,8 @@ jobs:
               "repository": "${{ github.repository }}",
               "ref": "${{ github.ref }}",
               "sha": "${{ github.sha }}",
-              "short_sha": "${{ steps.get_repometa.outputs.short_sha }}"
+              "short_sha": "${{ steps.get_repometa.outputs.short_sha }}",
+              "date": "${{ steps.get_repometa.outputs.date }}"
             }
           }
           __END__
@@ -61,6 +63,7 @@ jobs:
             --from gfm
             --to gfm
             --metadata version="${{ steps.get_repometa.outputs.short_sha }}"
+            --metadata date="${{ steps.get_repometa.outputs.date }}"
             --output="./${{ env.builddir }}/${{ env.prefix }}.md"
             "./${{ env.srcdir }}/${{ env.srcdoc }}"
 
@@ -71,9 +74,8 @@ jobs:
             --standalone
             --template eisvogel
             --from gfm
-            --variable papersize="${{ env.papersize }}"
-            --metadata title="${{ env.title }}"
             --metadata version="${{ steps.get_repometa.outputs.short_sha }}"
+            --metadata date="${{ steps.get_repometa.outputs.date }}"
             --output="./${{ env.builddir }}/${{ env.prefix }}.pdf"
             "./${{ env.srcdir }}/${{ env.srcdoc }}"
 
@@ -83,8 +85,8 @@ jobs:
           args: >-
             --standalone
             --from gfm
-            --metadata title="${{ env.title }}"
             --metadata version="${{ steps.get_repometa.outputs.short_sha }}"
+            --metadata date="${{ steps.get_repometa.outputs.date }}"
             --output="./${{ env.builddir }}/${{ env.prefix }}.docx"
             "./${{ env.srcdir }}/${{ env.srcdoc }}"
 
@@ -94,8 +96,8 @@ jobs:
           args: >-
             --standalone
             --from gfm
-            --metadata title="${{ env.title }}"
             --metadata version="${{ steps.get_repometa.outputs.short_sha }}"
+            --metadata date="${{ steps.get_repometa.outputs.date }}"
             --output="./${{ env.builddir }}/${{ env.prefix }}.html"
             "./${{ env.srcdir }}/${{ env.srcdoc }}"
 
