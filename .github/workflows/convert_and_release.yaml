@@ -36,8 +36,8 @@ jobs:
         id: get_repometa
         run: |
           cat <<-__END__ >> "$GITHUB_OUTPUT"
-          short_sha="$( git rev-parse --short ${{ github.sha }} )"
-          date="$( date --iso8601=seconds --utc | tr -d ':-' )"
+          short_sha=$( git rev-parse --short ${{ github.sha }} )
+          date=$( date --iso8601=seconds --utc | tr -d ':-' )
           __END__
 
       - name: Generate build metadata
