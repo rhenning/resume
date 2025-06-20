@@ -1,4 +1,59 @@
-# Richard Henning – Professional Résumé
+---
+title: Professional Résumé
+author: Richard Henning
+lang: en-US
+papersize: letter
+colorlinks: true
+
+keywords:
+  - resume
+  - engineer
+  - architect
+  - principal
+  - senior
+  - sr
+  - lead
+  - leader
+  - software
+  - infrastructure
+  - platform
+  - network
+  - cloud
+  - go
+  - golang
+  - python
+  - ruby
+  - shell
+  - scripting
+  - bash
+  - linux
+  - database
+  - git
+  - github
+  - aws
+  - sre
+  - devops
+  - devsecops
+  - observability
+  - messaging
+  - kafka
+  - kubernetes
+  - k8s
+  - terraform
+  - ansible
+  - chef
+  - docker
+  - ci
+  - cd
+  - sql
+  - nosql
+  - http
+  - ssl
+  - tls
+  - metrics
+  - monitoring
+
+---
 
 ## Contact Information
 
