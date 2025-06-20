@@ -35,13 +35,23 @@ jobs:
       - name: Get additional git repository metadata
         id: get_repometa
         run: |
+          ## fail on common errors
+          set -o errexit -o nounset -o pipefail
+          ## enable debug tracing - uncomment for debugging
+          # set -o xtrace
+          ## write metadata to GHA environment variables
           cat <<-__END__ >> "$GITHUB_OUTPUT"
-          short_sha=$( git rev-parse --short ${{ github.sha }} )
-          date=$( date --iso8601=seconds --utc | tr -d ':-' )
+            short_sha=$( git rev-parse --short ${{ github.sha }} )
+            date=$( date --iso-8601=seconds --utc | tr -d ':-' )
           __END__
 
       - name: Generate build metadata
         run: |
+          ## fail on common errors
+          set -o errexit -o nounset -o pipefail
+          ## enable debug tracing - uncomment for debugging
+          # set -o xtrace
+          ## write metadata to a JSON file for inclusion in the release
           cat <<-__END__ > "${{ env.builddir }}/BUILDMETA.json"
           {
             "github": {
