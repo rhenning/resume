@@ -61,7 +61,7 @@ jobs:
           fail_level: error
           ## `fail_on_error` is deprecated but used to suppress warnings.
           ## it can be removed when the action is updated to >=v2.
-          fail_on_error: false
+          fail_on_error: true
 
   style-check-misspell:
     runs-on: ubuntu-latest
