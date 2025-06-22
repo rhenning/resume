@@ -41,7 +41,7 @@ jobs:
           # set -o xtrace
           ## write metadata to GHA environment variables
           echo "short_sha=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_OUTPUT
-          echo "date=$(date --iso-8601=seconds --utc | tr -d ':-' ))" >> $GITHUB_OUTPUT
+          echo "date=$(date --iso-8601=seconds --utc | tr -d ':-' )" >> $GITHUB_OUTPUT
 
       - name: Generate build metadata
         run: |
