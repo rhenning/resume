@@ -70,8 +70,8 @@ jobs:
             --standalone
             --from gfm
             --to gfm
-            --metadata version="${{ steps.get_repometa.outputs.short_sha }}"
-            --metadata date="${{ steps.get_repometa.outputs.date }}"
+            --metadata version-meta="${{ steps.get_repometa.outputs.short_sha }}"
+            --metadata date-meta="${{ steps.get_repometa.outputs.date }}"
             --output="./${{ env.builddir }}/${{ env.prefix }}.md"
             "./${{ env.srcdir }}/${{ env.srcdoc }}"
 
@@ -82,8 +82,8 @@ jobs:
             --standalone
             --template eisvogel
             --from gfm
-            --metadata version="${{ steps.get_repometa.outputs.short_sha }}"
-            --metadata date="${{ steps.get_repometa.outputs.date }}"
+            --metadata version-meta="${{ steps.get_repometa.outputs.short_sha }}"
+            --metadata date-meta="${{ steps.get_repometa.outputs.date }}"
             --output="./${{ env.builddir }}/${{ env.prefix }}.pdf"
             "./${{ env.srcdir }}/${{ env.srcdoc }}"
 
@@ -93,8 +93,8 @@ jobs:
           args: >-
             --standalone
             --from gfm
-            --metadata version="${{ steps.get_repometa.outputs.short_sha }}"
-            --metadata date="${{ steps.get_repometa.outputs.date }}"
+            --metadata version-meta="${{ steps.get_repometa.outputs.short_sha }}"
+            --metadata date-meta="${{ steps.get_repometa.outputs.date }}"
             --output="./${{ env.builddir }}/${{ env.prefix }}.docx"
             "./${{ env.srcdir }}/${{ env.srcdoc }}"
 
@@ -104,8 +104,8 @@ jobs:
           args: >-
             --standalone
             --from gfm
-            --metadata version="${{ steps.get_repometa.outputs.short_sha }}"
-            --metadata date="${{ steps.get_repometa.outputs.date }}"
+            --metadata version-meta="${{ steps.get_repometa.outputs.short_sha }}"
+            --metadata date-meta="${{ steps.get_repometa.outputs.date }}"
             --output="./${{ env.builddir }}/${{ env.prefix }}.html"
             "./${{ env.srcdir }}/${{ env.srcdoc }}"
 
