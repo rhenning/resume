@@ -1,0 +1,135 @@
+---
+
+name: release
+
+on:
+  workflow_run:
+    workflows: [build]
+    types: [completed]
+
+    branches:
+      - main
+      - dev
+      - 'v[0-9]?*'
+
+  workflow_dispatch: {}
+
+env:
+  srcdir: src
+  srcdoc: professional.md
+  builddir: build
+  prefix: richard_henning-professional_resume
+
+jobs:
+  on-success:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: |
+          cat <<-__END__
+            `release` triggered by successful completion of `build` workflow.
+
+            trigger-event: ${{ toJson(github.event.workflow_run) }}
+          __END__
+
+  release:
+    needs: on-success
+
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: ${{ github.workspace }}
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get additional git repository metatdata
+        id: get_repometa
+        run: |
+          echo "short_sha=$( git rev-parse --short ${{ github.sha }} )" >> $GITHUB_OUTPUT
+
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.prefix }}-${{ steps.get_repometa.outputs.short_sha }}
+          path: ./artifacts
+
+      - name: Create GitHub Release
+        id: create_release
+        uses: actions/create-release@v1
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        with:
+          tag_name: release/${{ steps.get_repometa.outputs.short_sha }}
+          release_name: release/${{ steps.get_repometa.outputs.short_sha }}
+          prerelease: ${{github.event.workflow_run.head_branch != 'main'}}
+          draft: true
+
+      - name: Upload Markdown assets
+        uses: actions/upload-release-asset@v1
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/${{ env.prefix }}.md
+          asset_name: ${{ env.prefix }}.md
+          asset_content_type: text/markdown
+
+      - name: Upload PDF assets
+        uses: actions/upload-release-asset@v1
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/${{ env.prefix }}.pdf
+          asset_name: ${{ env.prefix }}.pdf
+          asset_content_type: application/pdf
+
+      - name: Upload DOCX assets
+        uses: actions/upload-release-asset@v1
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/${{ env.prefix }}.docx
+          asset_name: ${{ env.prefix }}.docx
+          asset_content_type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+
+      - name: Upload HTML assets
+        uses: actions/upload-release-asset@v1
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/${{ env.prefix }}.html
+          asset_name: ${{ env.prefix }}.html
+          asset_content_type: text/html
+
+      - name: Upload build metadata
+        uses: actions/upload-release-asset@v1
+
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./artifacts/BUILDMETA.json
+          asset_name: BUILDMETA.json
+          asset_content_type: application/json
