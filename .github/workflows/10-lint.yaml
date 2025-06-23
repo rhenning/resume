@@ -1,22 +1,28 @@
 ---
 
-name: Style & Syntax Checks
+name: lint
 
 on:
   push:
     branches:
       - main
+      - dev
+      - 'v[0-9]?*'
+
   pull_request:
     branches:
       - '**'
-  workflow_dispatch:
+
+  workflow_dispatch: {}
 
 jobs:
-  style-check-markdownlint:
+  markdownlint:
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
       pull-requests: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -28,11 +34,13 @@ jobs:
           reporter: github-pr-review
           fail_level: error
 
-  style-check-yamllint:
+  yamllint:
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
       pull-requests: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -44,11 +52,13 @@ jobs:
           reporter: github-pr-review
           fail_level: error
 
-  style-check-biome:
+  biome:
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
       pull-requests: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -63,11 +73,13 @@ jobs:
           ## it can be removed when the action is updated to >=v2.
           fail_on_error: true
 
-  style-check-misspell:
+  misspell:
     runs-on: ubuntu-latest
+
     permissions:
       contents: read
       pull-requests: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
