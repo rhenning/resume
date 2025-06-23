@@ -15,9 +15,7 @@ on:
   workflow_dispatch: {}
 
 env:
-  srcdir: src
-  srcdoc: professional.md
-  builddir: build
+  assetsdir: artifacts
   prefix: richard_henning-professional_resume
 
 jobs:
@@ -55,11 +53,11 @@ jobs:
         run: |
           echo "short_sha=$( git rev-parse --short ${{ github.sha }} )" >> $GITHUB_OUTPUT
 
-      - name: Download artifacts
+      - name: Fetch build artifacts
         uses: actions/download-artifact@v4
         with:
           name: ${{ env.prefix }}-${{ steps.get_repometa.outputs.short_sha }}
-          path: ./artifacts
+          path: ./${{ env.assetsdir }}
 
       - name: Create GitHub Release
         id: create_release
@@ -74,7 +72,7 @@ jobs:
           prerelease: ${{github.event.workflow_run.head_branch != 'main'}}
           draft: true
 
-      - name: Upload Markdown assets
+      - name: Release Markdown assets
         uses: actions/upload-release-asset@v1
 
         env:
@@ -82,11 +80,11 @@ jobs:
 
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifacts/${{ env.prefix }}.md
+          asset_path: ./${{ env.assetsdir }}/${{ env.prefix }}.md
           asset_name: ${{ env.prefix }}.md
           asset_content_type: text/markdown
 
-      - name: Upload PDF assets
+      - name: Release PDF assets
         uses: actions/upload-release-asset@v1
 
         env:
@@ -94,11 +92,11 @@ jobs:
 
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifacts/${{ env.prefix }}.pdf
+          asset_path: ./${{ env.assetsdir }}/${{ env.prefix }}.pdf
           asset_name: ${{ env.prefix }}.pdf
           asset_content_type: application/pdf
 
-      - name: Upload DOCX assets
+      - name: Release DOCX assets
         uses: actions/upload-release-asset@v1
 
         env:
@@ -106,11 +104,11 @@ jobs:
 
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifacts/${{ env.prefix }}.docx
+          asset_path: ./${{ env.assetsdir }}/${{ env.prefix }}.docx
           asset_name: ${{ env.prefix }}.docx
           asset_content_type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
 
-      - name: Upload HTML assets
+      - name: Release HTML assets
         uses: actions/upload-release-asset@v1
 
         env:
@@ -118,11 +116,11 @@ jobs:
 
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifacts/${{ env.prefix }}.html
+          asset_path: ./${{ env.assetsdir }}/${{ env.prefix }}.html
           asset_name: ${{ env.prefix }}.html
           asset_content_type: text/html
 
-      - name: Upload build metadata
+      - name: Release BUILDMETA assets
         uses: actions/upload-release-asset@v1
 
         env:
@@ -130,6 +128,6 @@ jobs:
 
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./artifacts/BUILDMETA.json
+          asset_path: ./${{ env.assetsdir }}/BUILDMETA.json
           asset_name: BUILDMETA.json
           asset_content_type: application/json
