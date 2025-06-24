@@ -64,7 +64,7 @@ limit the toil and manual process associated with my daily work.
 
 When _Fastnet_—a Philadelphia-area ISP and hosting provider I very much respected—
 was seeking out Linux sysadmins, I jumped at the opportunity, had an interview,
-and was thrilled to receive an offer letter, which I graciously accepted.
+and was thrilled to receive an offer letter, which I gratefully accepted.
 
 I learned _so much_ during my time at Fastnet, remaining there for about eight years—
 the longest stint of my career—and surviving the dot-com boom, bust, a merger
