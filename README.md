@@ -79,7 +79,7 @@ with slim budgets and a small staff.
 That experience left quite an impression, for which I owe a great debt of gratitude
 to my mentors and colleagues, several of whom have become lifelong friends.
 
-Since that time I've had the fortunate to work for a number of forward-looking tech
+Since that time I've been fortunate to work for a number of forward-looking tech
 organizations with amazing teams spanning varied domains, including Media and
 Entertainment, Public and Private Cloud, E-commerce, Internet and Data Center
 Services, Telecommunications, Web and Server Hosting, and Document Intelligence,
