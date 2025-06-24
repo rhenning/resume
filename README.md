@@ -52,6 +52,7 @@ A cross-section of these companies and their products include:
 * __Warner Bros. Discovery__ &mdash; where I worked on ___Max___
 * __WarnerMedia__ &mdash; where I worked on ___HBO Max___
 * __Comcast/Xfinity__ &mdash; where I worked on ___Xfinity Stream___ and the ___X1 Video Platform___
+* __The Neat Company__ &mdash; where I worked on ___NeatCloud___
 * __The Lime Group/Lime Labs__ &mdash; where I worked on ___Jux, LimeBits, LimeDomains___
   and ___LimeExchange___ (and _LimeWire_'s parent organization)
 * __Fastnet & NetAxs__ &mdash; popular Philadelphia-area ISPs specializing in business and
