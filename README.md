@@ -17,12 +17,12 @@ scale.
 
 Some amazing products and teams I've had the pleasure of working on include:
 
-* Max @ Warner Bros. Discovery
-* HBO Max @ WarnerMedia
-* Xfinity Stream and the X1 Video Platform @ Comcast/Xfinity
-* the Workarea Commerce Platform @ Weblinc Commerce
-* NeatCloud @ The Neat Company
-* Jux, LimeBits, LimeDomains, and LimeExchange @ The Lime Group
+* _Max_ @ Warner Bros. Discovery
+* _HBO Max_ @ WarnerMedia
+* _Xfinity Stream_ and the _X1 Video Platform_ @ Comcast/Xfinity
+* the _Workarea Commerce Platform_ @ Weblinc Commerce
+* _NeatCloud_ @ The Neat Company
+* _Jux_, _LimeBits_, _LimeDomains_, and _LimeExchange_ @ The Lime Group
   (LimeWire's parent organization)
 * Managed Internet services @ Fastnet & NetAxs — popular ISP/MSPs of
   the Greater Philadelphia area, specializing in business and residential
@@ -32,47 +32,57 @@ Some amazing products and teams I've had the pleasure of working on include:
 
 ### Where can I see your résumé?
 
-Please visit this repository's **[list of most recent Releases and Assets][releases]**, where you
-can find and download documents suitable for viewing. PDF is recommended for
-human beings, but several additional formats are available for your convenience
-or preference. These include PDF, Markdown, HTML, and DOCX (Microsoft Office
-Open XML).
+Please visit this project's **[list of most recent Releases and Assets][releases]**, where you
+can find and download documents suitable for viewing. PDF is recommended
+for human beings, but several additional formats are available for convenience.
+PDF, GitHub-flavored Markdown, HTML, and DOCX (Microsoft Office Open XML)
+are available at the time of writing.
 
-### What's all this about "Releases" and "Assets" of a résumé?
+### What's all this "Releases and Assets" jargon?
 
 My résumé is stored and maintained _as code_ in this GitHub repository, leveraging
-development, test, build, and delivery best practices common to many modern
+development, test, build, and delivery practices that are common to many modern
 software engineering projects.
 
 The document's text and layout instructions for the various output formats are
 maintained as source code, subject to revision control. Modifications are made
 in topic branches—enforced by security settings on the repository—where an
 associated [GitHub Actions pipeline][pipeline] picks up changes, subjects them to a bit of
-static analysis, and attempts to convert the modified copy and layout to the
+static analysis, and attempts to convert the proposed copy and layout to the
 desired output formats.
 
-If all goes well, the rendered documents are archived for review, and published
-for public download upon merge of the topic branch into the `main` branch.
+If all goes well, the rendered documents are archived for review, and will be
+published for public download upon merge of the topic branch into the `main`
+branch.
 
-I've glossed over a good bit of fine detail above, but it is often said that _a picture
-is worth a thousand words_.
+If not, failed pre-flight checks or build steps are flagged as such, and suggestions
+intended to resolve these failures may be included on associated pull requests, in
+the form of code suggestions and PR comments. The topic branch is blocked from
+being merged until these issues have been resolved by follow-up commits on the
+topic branch.
+
+I've glossed over a good bit of fine detail above. In spirit of that old adage _a
+picture is worth a thousand words_, below are a few.
 
 ```mermaid
 flowchart TD
-  github.com:rhenning/resume --- branch:main
-  github.com:rhenning/resume --- branch:dev
-  github.com:rhenning/resume --- branch:feature/*
-  
-  branch:main --> github-actions:release
-  branch:dev --> github-actions:pre-release
-  branch:feature/* --> github-actions:lint
-  branch:feature/* --> github-actions:build
-  branch:feature/* --> github-actions:archive
+  github.com:rhenning/resume --branch--> main --branch--> dev
 
-  github-actions:lint
-  github-actions:build
-  github-actions:pre-release
-  github-actions:release
+  main --branch---> feature/*
+  feature/* <---merge-- main
+  feature/* <---merge-- dev
+
+  actions-lint --> yamllint
+  actions:lint --> jsonlint
+  actions:lint --> markdownlint
+  github-actions:lint --> misspell
+  github-actions:lint --> biome
+
+  github-actions:build --> pandoc
+  pandoc --> latex --> pdf
+  pandoc ---> html
+  pandoc ---> docx
+  pandoc ---> gfm
 
 ```
 
