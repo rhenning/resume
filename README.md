@@ -30,17 +30,57 @@ Some amazing products and teams I've had the pleasure of working on include:
   email, DNS, newsgroups, observability, disaster recovery, managed data
   centers, and professional consulting services.
 
-### How can I download a copy of your résumé?
+### Where can I see your résumé?
 
-Please visit the **[list of most recent Releases and Assets][releases]** where you can find and
-download documents suitable for viewing. PDF is the recommended format, but
-several others are provided for convenience.
+Please visit this repository's **[list of most recent Releases and Assets][releases]**, where you
+can find and download documents suitable for viewing. PDF is recommended for
+human beings, but several additional formats are available for your convenience
+or preference. These include PDF, Markdown, HTML, and DOCX (Microsoft Office
+Open XML).
 
-### How did you get involved with technology?
+### What's all this about "Releases" and "Assets" of a résumé?
+
+My résumé is stored and maintained _as code_ in this GitHub repository, leveraging
+development, test, build, and delivery best practices common to many modern
+software engineering projects.
+
+The document's text and layout instructions for the various output formats are
+maintained as source code, subject to revision control. Modifications are made
+in topic branches—enforced by security settings on the repository—where an
+associated [GitHub Actions pipeline][pipeline] picks up changes, subjects them to a bit of
+static analysis, and attempts to convert the modified copy and layout to the
+desired output formats.
+
+If all goes well, the rendered documents are archived for review, and published
+for public download upon merge of the topic branch into the `main` branch.
+
+I've glossed over a good bit of fine detail above, but it is often said that _a picture
+is worth a thousand words_.
+
+```mermaid
+flowchart TD
+  github.com:rhenning/resume --- branch:main
+  github.com:rhenning/resume --- branch:dev
+  github.com:rhenning/resume --- branch:feature/*
+  
+  branch:main --> github-actions:release
+  branch:dev --> github-actions:pre-release
+  branch:feature/* --> github-actions:lint
+  branch:feature/* --> github-actions:build
+  branch:feature/* --> github-actions:archive
+
+  github-actions:lint
+  github-actions:build
+  github-actions:pre-release
+  github-actions:release
+
+```
+
+### How did you get involved in the tech industry?
 
 I've been fascinated both by making things and taking them apart, in order to
 understand what makes them tick, for about as long as I can remember, much to
-the dismay of my patient and loving parents, at times.
+the dismay of my patient and loving parents at times.
 
 Perhaps that was Dad's motivation for giving the gift of a used Commodore all
 along—I might stop taking apart his turntable and guitar pedals.
@@ -89,15 +129,16 @@ Organization, Generation, and Archival.
 
 This source code repository, the automation within, and generated artifacts depend
 upon software components that have been built, refined, and maintained by members
-of the [_Free and Open-Source Software (FOSS)_][FOSS] community from around the
-globe, many of whom are _volunteers_ who have donated their labor and expertise
-to the public domain, of their own free will.
+of the [_Free and Open-Source Software (FOSS)_][FOSS] community from around the globe, many
+of whom are _volunteers_ who have donated their labor and expertise to the public
+domain of their own free will.
 
-Open-source software stewardship is a necessary, yet often thankless, labor of
-love, without which many of the technology products and companies we love would
-not exist as they do today.
+Open-source software stewardship is a necessary, yet often thankless, labor of love,
+without which many of the technology products and companies we love would not
+exist as they do today.
 
 **Thank You to all open-source contributors for your hard work and generosity.**
 
 [FOSS]: https://en.wikipedia.org/wiki/Free_and_open-source_software
 [releases]: https://github.com/rhenning/resume/releases
+[pipeline]: https://github.com/rhenning/resume/actions
