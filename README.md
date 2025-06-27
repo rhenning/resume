@@ -62,29 +62,70 @@ being merged until these issues have been resolved by follow-up commits on the
 topic branch.
 
 I've glossed over a good bit of fine detail above. In spirit of that old adage _a
-picture is worth a thousand words_, below are a few.
+picture is worth a thousand words_, a few are included below.
 
 ```mermaid
-flowchart TD
-  github.com:rhenning/resume --branch--> main --branch--> dev
+gitGraph
+  commit tag: "r1"
 
-  main --branch---> feature/*
-  feature/* <---merge-- main
-  feature/* <---merge-- dev
+  branch dev
 
-  actions-lint --> yamllint
-  actions:lint --> jsonlint
-  actions:lint --> markdownlint
-  github-actions:lint --> misspell
-  github-actions:lint --> biome
+  checkout main
+  commit tag: "r2"
 
-  github-actions:build --> pandoc
-  pandoc --> latex --> pdf
-  pandoc ---> html
-  pandoc ---> docx
-  pandoc ---> gfm
+  branch feature/A
+  commit
 
+  checkout main
+  commit tag: "r3"
+
+  branch feature/B
+  commit
+
+  checkout feature/A
+  commit
+
+  checkout feature/B
+  commit
+
+  checkout main
+  merge feature/B tag: "r4" type: HIGHLIGHT
+
+  checkout feature/A
+  commit
+  commit
+  merge main
+
+  checkout main
+
+  checkout dev
+
+  branch feature/C
+  commit
+
+  checkout feature/C
+  commit
+
+  checkout dev
+  merge feature/C tag: "draft1" type: HIGHLIGHT
+
+  branch feature/D
+  commit
+
+  checkout main
+  merge feature/A tag: "r5" type: HIGHLIGHT
+
+  checkout dev
+  merge feature/D tag: "draft2" type: HIGHLIGHT
+
+  checkout dev
+  merge main tag: "draft3" type: HIGHLIGHT
+
+  checkout main
+  merge dev tag: "r6" type: HIGHLIGHT
 ```
+
+A [legend with the various node shapes labeled for reference][git-legend] is available.
 
 ### How did you get involved in the tech industry?
 
@@ -152,3 +193,4 @@ exist as they do today.
 [FOSS]: https://en.wikipedia.org/wiki/Free_and_open-source_software
 [releases]: https://github.com/rhenning/resume/releases
 [pipeline]: https://github.com/rhenning/resume/actions
+[git-legend]: doc/branch-legend.md
