@@ -74,8 +74,15 @@ picture is worth a thousand words_, a few are included below.
 ---
 config:
   theme: base
+  themeVariables:
+    tagLabelFontSize: "1em"
+    commitLabelFontSize: "16px"
+    commitLabelColor: "#ffffff"
+    commitLabelBackground: "#000000"
   gitGraph:
     showCommitLabel: false
+    mainBranchName: main
+    parallelCommits: false
 ---
 gitGraph TB:
   commit tag: "r1"
@@ -101,7 +108,7 @@ gitGraph TB:
   commit
 
   checkout main
-  merge feature/B tag: "r4" type: REVERSE
+  merge feature/B tag: "r4" type: HIGHLIGHT
 
   checkout feature/A
   commit
@@ -205,4 +212,4 @@ exist as they do today.
 [FOSS]: https://en.wikipedia.org/wiki/Free_and_open-source_software
 [releases]: https://github.com/rhenning/resume/releases
 [pipeline]: https://github.com/rhenning/resume/actions
-[git-legend]: doc/branch-legend.md
+[git-legend]: doc/gitgraph-legend.md
