@@ -71,7 +71,13 @@ I've glossed over a good bit of fine detail above. In spirit of that old adage _
 picture is worth a thousand words_, a few are included below.
 
 ```mermaid
-gitGraph
+---
+config:
+  theme: base
+  gitGraph:
+    showCommitLabel: false
+---
+gitGraph TB:
   commit tag: "r1"
 
   branch dev
@@ -95,7 +101,7 @@ gitGraph
   commit
 
   checkout main
-  merge feature/B tag: "r4" type: HIGHLIGHT
+  merge feature/B tag: "r4" type: REVERSE
 
   checkout feature/A
   commit
