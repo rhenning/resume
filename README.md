@@ -119,7 +119,7 @@ gitGraph TB:
   commit
 
   checkout dev
-  merge feature/C tag: "draft1" type: HIGHLIGHT
+  merge feature/C tag: "draft1"
 
   branch feature/D
   commit
@@ -128,10 +128,10 @@ gitGraph TB:
   merge feature/A tag: "r5" type: HIGHLIGHT
 
   checkout dev
-  merge feature/D tag: "draft2" type: HIGHLIGHT
+  merge feature/D tag: "draft2"
 
   checkout dev
-  merge main tag: "draft3" type: HIGHLIGHT
+  merge main tag: "draft3"
 
   checkout main
   merge dev tag: "r6" type: HIGHLIGHT
@@ -151,6 +151,7 @@ Of note above:
   * `v[0-9]+*` (_i.e._ the letter `v` and one or more digits, optionally followed by
     additional text) are reserved for major version _release trains_, should I wish
     to perform some major refactor in the future.
+* Topic branches are named `feature/*` above, but this is simply convention.
 * Commits triggering pre-releases are depicted as a _round node with a **`draft*` tag**_.
 * Commits triggering public releases are depicted as a _square node with an **`r*` tag**_.
 
