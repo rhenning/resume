@@ -61,6 +61,12 @@ the form of code suggestions and PR comments. The topic branch is blocked from
 being merged until these issues have been resolved by follow-up commits on the
 topic branch.
 
+Branches named `dev` or matching the pattern `v[0-9]*` (_i.e._ beginning with the
+letter `v` and a digit, optionally followed by additional text) are handled as special
+cases, intended as perennial children of the `main` branch. Merging pull requests
+to these branches generates _non-public draft_ pre-releases by default, while merges
+to `main` are published for download by the general public.
+
 I've glossed over a good bit of fine detail above. In spirit of that old adage _a
 picture is worth a thousand words_, a few are included below.
 
