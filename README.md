@@ -15,16 +15,17 @@ companies design, implement, provision, sustainably operate, and continuously
 deliver change to always-on web systems, cloud, and on-prem infrastructure at
 scale.
 
-Some amazing products and teams I've had the pleasure of working on include:
+Some of the amazing products and teams I've had the pleasure of working with:
 
-* _Max_ @ Warner Bros. Discovery
-* _HBO Max_ @ WarnerMedia
-* _Xfinity Stream_ and the _X1 Video Platform_ @ Comcast/Xfinity
-* the _Workarea Commerce Platform_ @ Weblinc Commerce
-* _NeatCloud_ @ The Neat Company
-* _Jux_, _LimeBits_, _LimeDomains_, and _LimeExchange_ @ The Lime Group
-  (LimeWire's parent organization)
-* Managed Internet services @ Fastnet & NetAxs — popular ISP/MSPs of
+* [**Max**][max.com] @ _Warner Bros. Discovery_
+* [**HBO Max**][hbomax-wiki] @ _WarnerMedia_
+* [**Xfinity Stream**][xfinity.com/get-stream] and the **X1 Video Platform** @ _Comcast/Xfinity_
+* the [**Workarea Commerce Platform**][workarea] @ _Weblinc Commerce_
+* [**NeatCloud**][neat.com] @ _The Neat Company_
+* [**Jux**][jux-tnw], **LimeDomains**, **LimeBits** & **LimeExchange** @ _The Lime Group_ —
+  immersive visual blogging, website design, domain registry, hosting,
+  and marketplace platforms for freelancers.
+* Managed Internet services @ _Fastnet_ & _NetAxs_ — popular ISP/MSPs of
   the Greater Philadelphia area, specializing in business and residential
   Internet, web server hosting, colocation, carrier & business networking,
   email, DNS, newsgroups, observability, disaster recovery, managed data
@@ -33,10 +34,9 @@ Some amazing products and teams I've had the pleasure of working on include:
 ### Where can I see your résumé?
 
 Please visit this project's **[list of most recent Releases and Assets][releases]**, where you
-can find and download documents suitable for viewing. PDF is recommended
-for human beings, but several additional formats are available for convenience.
-PDF, GitHub-flavored Markdown, HTML, and DOCX (Microsoft Office Open XML)
-are available at the time of writing.
+can download documents suitable for viewing. I recommend PDF for humans,
+but other formats are available for convenience. PDF, Markdown, HTML, and
+DOCX (Microsoft Office Open XML) are available at the time of writing.
 
 ### What's all this "Releases and Assets" jargon?
 
@@ -51,24 +51,17 @@ associated [GitHub Actions pipeline][pipeline] picks up changes, subjects them t
 static analysis, and attempts to convert the proposed copy and layout to the
 desired output formats.
 
-If all goes well, the rendered documents are archived for review, and will be
-published for public download upon merge of the topic branch into the `main`
+_If all goes well,_ the rendered documents are archived for review, and will be
+published for public download upon merge of a topic branch into the `main`
 branch.
 
-If not, failed pre-flight checks or build steps are flagged as such, and suggestions
-intended to resolve these failures may be included on associated pull requests, in
-the form of code suggestions and PR comments. The topic branch is blocked from
-being merged until these issues have been resolved by follow-up commits on the
-topic branch.
+_If not,_ any failed steps are flagged as such, and suggestions may be made to
+resolve failures as comments on associated pull requests. Topic branches are
+blocked from being merged until such issues have been resolved by follow-up
+commits.
 
-Branches named `dev` or matching the pattern `v[0-9]*` (_i.e._ beginning with the
-letter `v` and a digit, optionally followed by additional text) are handled as special
-cases, intended as perennial children of the `main` branch. Merging pull requests
-to these branches generates _non-public draft_ pre-releases by default, while merges
-to `main` are published for download by the general public.
-
-I've glossed over a good bit of fine detail above. In spirit of that old adage _a
-picture is worth a thousand words_, a few are included below.
+I've glossed over a good bit of fine detail above, but in spirit of that old adage
+_A Picture is Worth a Thousand Words_, some are included below.
 
 ```mermaid
 ---
@@ -144,9 +137,26 @@ gitGraph TB:
   merge dev tag: "r6" type: HIGHLIGHT
 ```
 
-A [legend with the various node shapes labeled for reference][git-legend] is available.
+Of note above:
 
-### How did you get involved in the tech industry?
+* By and large, I'm practicing _trunk-based development_. This won't accommodate the
+  most complex of release workflows, but I wasn't looking to overcomplicate things.
+* Merging a pull request (or any branch, for that matter) into `main` automatically
+  publishes the build artifacts as a release, available for download by the public.
+* Branches named `dev` or matching the pattern `v[0-9]+*` are handled specially.
+  * Both can be considered _perennial_ (_i.e._ long-lived, recurring) _children of `main`_.
+  * Commits to both trigger _non-public draft pre-releases_ by default, which can
+    only be viewed by project participants.
+  * `dev` is an _ad hoc_ branch suitable for such purposes.
+  * `v[0-9]+*` (_i.e._ the letter `v` and one or more digits, optionally followed by
+    additional text) are reserved for major version _release trains_, should I wish
+    to perform some major refactor in the future.
+* Commits triggering pre-releases are depicted as a _round node with a **`draft*` tag**_.
+* Commits triggering public releases are depicted as a _square node with an **`r*` tag**_.
+
+A [legend with the various node shapes labeled for reference][git-legend] is also available.
+
+### How did you become involved in the tech industry?
 
 I've been fascinated both by making things and taking them apart, in order to
 understand what makes them tick, for about as long as I can remember, much to
@@ -209,7 +219,13 @@ exist as they do today.
 
 **Thank You to all open-source contributors for your hard work and generosity.**
 
-[FOSS]: https://en.wikipedia.org/wiki/Free_and_open-source_software
 [releases]: https://github.com/rhenning/resume/releases
 [pipeline]: https://github.com/rhenning/resume/actions
 [git-legend]: doc/gitgraph-legend.md
+[max.com]: https://max.com
+[hbomax-wiki]: https://en.wikipedia.org/wiki/HBO_Max
+[xfinity.com/get-stream]: https://www.xfinity.com/get-stream
+[workarea]: https://www.workarea.com/pages/platform-tour.html
+[neat.com]: https://neat.com
+[jux-tnw]: https://thenextweb.com/news/jux-learns-from-the-rest-to-create-the-most-beautiful-blog-platform-yet
+[FOSS]: https://en.wikipedia.org/wiki/Free_and_open-source_software
