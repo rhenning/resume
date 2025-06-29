@@ -63,10 +63,13 @@ commits.
 I've glossed over a good bit of fine detail above, but in spirit of that old adage
 _A Picture is Worth a Thousand Words_, some are included below.
 
+#### Branch/Merge Strategy
+
 ```mermaid
 ---
+/* title: Branch/Merge Strategy */
 config:
-  theme: base
+  theme: dark
   themeVariables:
     tagLabelFontSize: "1em"
     commitLabelFontSize: "16px"
@@ -156,6 +159,50 @@ Of note above:
 * Commits triggering public releases are depicted as a _square node with an **`r*` tag**_.
 
 A [legend with the various node shapes labeled for reference][git-legend] is also available.
+
+#### CI/CD Workflow
+
+```mermaid
+---
+/* title: CI/CD Workflow */
+config:
+  theme: dark
+  look: handDrawn
+---
+flowchart
+  subgraph gh["GitHub: rhenning/resume"]
+    featureBranches["`feature/*`"]
+    devBranch["`dev`"]
+    mainBranch["`main`"]
+  end
+
+  subgraph gha[GitHub Actions]
+    lintWorkflow@{ shape: process, label: "lint" }
+    buildWorkflow@{ shape: process, label: "build" }
+    preReleaseWorkflow@{ shape: process, label: "pre-release\n(draft)" }
+    releaseWorkflow@{ shape: process, label: "release\n(public)" }
+  end
+
+  featureBranches -.-o featurePush@{ shape: event, label: "on: push" } -.-> lintWorkflow
+  featurePush -.-> buildWorkflow
+  devBranch -.-o devPush@{ shape: event, label: "on: push" } -.-> preReleaseWorkflow
+  mainBranch -.-o mainPush@{ shape: event, label: "on: push" } -.-> releaseWorkflow
+
+  lintWorkflow --- lintFork@{ shape: fork }
+  lintFork --> markdownlint
+  lintFork --> jsonlint
+  lintFork --> yamllint
+  lintFork --> spelling
+
+  buildWorkflow --- buildFork@{ shape: fork }
+  buildFork --> pandoc@{ shape: process } --> pandocFork@{ shape: fork }
+  buildFork -----> buildmeta@{ shape: doc, label: "BUILDMETA.json" }
+
+  pandocFork --> latex@{ shape: subprocess, label: "LaTeX" } --> pdf@{ shape: doc, label: PDF }
+  pandocFork ---> markdown@{ shape: doc, label: "GitHub-flavored\nMarkdown" }
+  pandocFork ---> html@{ shape: doc, label: HTML }
+  pandocFork ---> docx@{ shape: doc, label: DOCX }
+```
 
 ### How did you become involved in the tech industry?
 
