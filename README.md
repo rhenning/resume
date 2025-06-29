@@ -67,7 +67,6 @@ _A Picture is Worth a Thousand Words_, some are included below.
 
 ```mermaid
 ---
-/* title: Branch/Merge Strategy */
 config:
   theme: dark
   themeVariables:
@@ -164,7 +163,6 @@ A [legend with the various node shapes labeled for reference][git-legend] is als
 
 ```mermaid
 ---
-/* title: CI/CD Workflow */
 config:
   theme: dark
   look: handDrawn
