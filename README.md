@@ -185,8 +185,8 @@ flowchart
 
   featureBranches -.-o featurePush@{ shape: event, label: "on: push" } -.-> lintWorkflow
   featurePush -.-> buildWorkflow
-  devBranch -.-o devPush@{ shape: event, label: "on: push" } -.-> preReleaseWorkflow
-  mainBranch -.-o mainPush@{ shape: event, label: "on: push" } -.-> releaseWorkflow
+  devBranch -.-o devPush@{ shape: event, label: "on: push\nafter: build.success" } -.-> preReleaseWorkflow
+  mainBranch -.-o mainPush@{ shape: event, label: "on: push\nafter: build.success" } -.-> releaseWorkflow
 
   lintWorkflow --- lintFork@{ shape: fork }
   lintFork --> markdownlint
@@ -203,6 +203,14 @@ flowchart
   pandocFork ---> html@{ shape: doc, label: HTML }
   pandocFork ---> docx@{ shape: doc, label: DOCX }
 ```
+
+Some items are omitted from the workflow diagram for clarity's sake. These include:
+
+* Events updating a Pull Request's Status Checks, based on results of the various
+  linters, are not shown.
+* The process of collecting and uploading artifacts arising as a result of the `build`
+  workflow is not shown.
+* I've left out step-by-step details of the pre-release and release processes.
 
 ### How did you become involved in the tech industry?
 

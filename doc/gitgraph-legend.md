@@ -5,7 +5,7 @@ Here is a simplified example with the various node shapes labeled for reference.
 ```mermaid
 ---
 config:
-  theme: base
+  theme: dark
   themeVariables:
     tagLabelFontSize: "1em"
     commitLabelFontSize: "16px"
