@@ -84,8 +84,8 @@ jobs:
 
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./${{ env.assetsdir }}/${{ env.prefix }}.md
-          asset_name: ${{ env.prefix }}.md
+          asset_path: ./${{ env.assetsdir }}/${{ env.prefix }}-${{ steps.get_repometa.outputs.short_sha }}.md
+          asset_name: ${{ env.prefix }}-${{ steps.get_repometa.outputs.short_sha }}.md
           asset_content_type: text/markdown
 
       - name: Release PDF assets
@@ -96,8 +96,8 @@ jobs:
 
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./${{ env.assetsdir }}/${{ env.prefix }}.pdf
-          asset_name: ${{ env.prefix }}.pdf
+          asset_path: ./${{ env.assetsdir }}/${{ env.prefix }}-${{ steps.get_repometa.outputs.short_sha }}.pdf
+          asset_name: ${{ env.prefix }}-${{ steps.get_repometa.outputs.short_sha }}.pdf
           asset_content_type: application/pdf
 
       - name: Release DOCX assets
@@ -108,8 +108,8 @@ jobs:
 
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./${{ env.assetsdir }}/${{ env.prefix }}.docx
-          asset_name: ${{ env.prefix }}.docx
+          asset_path: ./${{ env.assetsdir }}/${{ env.prefix }}-${{ steps.get_repometa.outputs.short_sha }}.docx
+          asset_name: ${{ env.prefix }}-${{ steps.get_repometa.outputs.short_sha }}.docx
           asset_content_type: application/vnd.openxmlformats-officedocument.wordprocessingml.document
 
       - name: Release HTML assets
@@ -120,8 +120,8 @@ jobs:
 
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./${{ env.assetsdir }}/${{ env.prefix }}.html
-          asset_name: ${{ env.prefix }}.html
+          asset_path: ./${{ env.assetsdir }}/${{ env.prefix }}-${{ steps.get_repometa.outputs.short_sha }}.html
+          asset_name: ${{ env.prefix }}-${{ steps.get_repometa.outputs.short_sha }}.html
           asset_content_type: text/html
 
       - name: Release BUILDMETA assets
