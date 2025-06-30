@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: "`release` triggered by `build` workflow {{ github.event.workflow_run.id }}"
+      - name: "`release` triggered by `build` workflow ${{ github.event.workflow_run.id }}"
         run: |
           cat <<-__END__
           workflow-run-event: ${{ toJson(github.event.workflow_run) }}
@@ -74,7 +74,7 @@ jobs:
           tag_name: release/${{ steps.get_repometa.outputs.short_sha }}
           release_name: release/${{ steps.get_repometa.outputs.short_sha }}
           prerelease: ${{github.event.workflow_run.head_branch != 'main'}}
-          draft: true
+          draft: ${{github.event.workflow_run.head_branch != 'main'}}
 
       - name: Release Markdown assets
         uses: actions/upload-release-asset@v1

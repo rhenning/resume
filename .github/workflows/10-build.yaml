@@ -77,7 +77,7 @@ jobs:
             --to gfm
             --metadata version-meta="${{ steps.get_repometa.outputs.short_sha }}"
             --metadata date-meta="${{ steps.get_repometa.outputs.date }}"
-            --output="./${{ env.builddir }}/${{ env.prefix }}.md"
+            --output="./${{ env.builddir }}/${{ env.prefix }}-${{ steps.get_repometa.outputs.short_sha }}.md"
             "./${{ env.srcdir }}/${{ env.srcdoc }}"
 
       - name: Convert source to PDF
@@ -89,7 +89,7 @@ jobs:
             --from gfm
             --metadata version-meta="${{ steps.get_repometa.outputs.short_sha }}"
             --metadata date-meta="${{ steps.get_repometa.outputs.date }}"
-            --output="./${{ env.builddir }}/${{ env.prefix }}.pdf"
+            --output="./${{ env.builddir }}/${{ env.prefix }}-${{ steps.get_repometa.outputs.short_sha }}.pdf"
             "./${{ env.srcdir }}/${{ env.srcdoc }}"
 
       - name: Convert source to DOCX
@@ -100,7 +100,7 @@ jobs:
             --from gfm
             --metadata version-meta="${{ steps.get_repometa.outputs.short_sha }}"
             --metadata date-meta="${{ steps.get_repometa.outputs.date }}"
-            --output="./${{ env.builddir }}/${{ env.prefix }}.docx"
+            --output="./${{ env.builddir }}/${{ env.prefix }}-${{ steps.get_repometa.outputs.short_sha }}.docx"
             "./${{ env.srcdir }}/${{ env.srcdoc }}"
 
       - name: Convert source to HTML
@@ -111,7 +111,7 @@ jobs:
             --from gfm
             --metadata version-meta="${{ steps.get_repometa.outputs.short_sha }}"
             --metadata date-meta="${{ steps.get_repometa.outputs.date }}"
-            --output="./${{ env.builddir }}/${{ env.prefix }}.html"
+            --output="./${{ env.builddir }}/${{ env.prefix }}-${{ steps.get_repometa.outputs.short_sha }}.html"
             "./${{ env.srcdir }}/${{ env.srcdoc }}"
 
       - name: Upload build artifacts
