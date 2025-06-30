@@ -43,6 +43,7 @@ jobs:
         working-directory: ${{ github.workspace }}
 
     permissions:
+      actions: write
       contents: write
 
     steps:
@@ -57,9 +58,10 @@ jobs:
       - name: Fetch build artifacts
         uses: actions/download-artifact@v4
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ github.event.workflow_run.id }}
-          name: ${{ env.prefix }}-${{ steps.get_repometa.outputs.short_sha }}
           path: ./${{ env.assetsdir }}
+          merge-multiple: true
 
       - name: Create GitHub Release
         id: create_release
