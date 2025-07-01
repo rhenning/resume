@@ -1,11 +1,12 @@
 # `rhenning/resume`
 
 <!-- markdownlint-disable MD033 -->
-[<img src="https://flat.badgen.net/github/release/rhenning/resume" alt="Latest Version" />][latest-release]
+&nbsp;&nbsp;[<img src="https://flat.badgen.net/github/release/rhenning/resume" alt="Download the latest version" />][latest-release]
+&nbsp;&nbsp;[<img src="https://flat.badgen.net/github/checks/rhenning/resume" alt="pipeline build and release status" />][actions-main]
 <!-- markdownlint-restore -->
 
 > [!TIP]
-> Here to fetch the latest copy and would rather skip the pleasantries? Click on the
+> Here for the latest copy and would rather skip the pleasantries? Click on the
 > _release_ badge above and grab the PDF.
 
 ## FAQ
@@ -282,6 +283,7 @@ exist as they do today.
 **Thank You to all open-source contributors for your hard work and generosity.**
 
 [latest-release]: https://github.com/rhenning/resume/releases/latest
+[actions-main]: https://github.com/rhenning/resume/actions?query=branch%3Amain
 [pipeline]: https://github.com/rhenning/resume/actions
 [git-legend]: doc/gitgraph-legend.md
 [max.com]: https://max.com
