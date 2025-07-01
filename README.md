@@ -1,6 +1,6 @@
 # `rhenning/resume`
 
-[<img src="https://flat.badgen.net/github/release/rhenning/resume" />][latest-release]
+[<img src="https://flat.badgen.net/github/release/rhenning/resume" alt="Latest Version" />][latest-release]
 
 > [!NOTE]
 > Here to fetch the latest copy and would rather skip the pleasantries? Click on the
