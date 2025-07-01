@@ -1,8 +1,10 @@
 # `rhenning/resume`
 
+<!-- markdownlint-disable MD033 -->
 [<img src="https://flat.badgen.net/github/release/rhenning/resume" alt="Latest Version" />][latest-release]
+<!-- markdownlint-restore -->
 
-> [!NOTE]
+> [!TIP]
 > Here to fetch the latest copy and would rather skip the pleasantries? Click on the
 > _release_ badge above and grab the PDF.
 
