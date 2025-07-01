@@ -1,13 +1,13 @@
 # `rhenning/resume`
 
 <!-- markdownlint-disable MD033 -->
-&nbsp;&nbsp;[<img src="https://flat.badgen.net/github/release/rhenning/resume" alt="Download the latest version" />][latest-release]
-&nbsp;&nbsp;[<img src="https://flat.badgen.net/github/checks/rhenning/resume" alt="pipeline build and release status" />][actions-main]
+&nbsp;&nbsp;[<img src="https://flat.badgen.net/github/release/rhenning/resume/stable?cache=780&scale=2&icon=git&label=latest" alt="get the latest version" />][latest-release]
+&nbsp;&nbsp;[<img src="https://flat.badgen.net/github/checks/rhenning/resume?cache=780&scale=2&icon=github&label=pipeline" alt="pipeline build and release status" />][actions-main]
 <!-- markdownlint-restore -->
 
 > [!TIP]
 > Here for the latest copy and would rather skip the pleasantries? Click on the
-> _release_ badge above and grab the PDF.
+> _latest_ badge above and grab the PDF.
 
 ## FAQ
 
