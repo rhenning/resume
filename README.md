@@ -1,5 +1,11 @@
 # `rhenning/resume`
 
+[<img src="https://flat.badgen.net/github/release/rhenning/resume" />][latest-release]
+
+> [!NOTE]
+> Here to fetch the latest copy and would rather skip the pleasantries? Click on the
+> _release_ badge above and grab the PDF.
+
 ## FAQ
 
 ### Who are you?
@@ -8,7 +14,7 @@ _**Hi.**_ :wave:
 
 My name is Richard Henning—"Rich" to most—a technologist, software engineer,
 and creative hailing from Philadelphia, _City of Brotherly Love_ and birthplace of the
-United States, where I live with my partner, daughters, and a lovable mutt.
+United States, where I live with my partner, kids, and a lovable mutt.
 
 I'm a tech industry veteran with more than twenty years of experience, helping
 companies design, implement, provision, sustainably operate, and continuously
@@ -33,7 +39,7 @@ Some of the amazing products and teams I've had the pleasure of working with:
 
 ### Where can I see your résumé?
 
-Please visit this project's **[list of most recent Releases and Assets][releases]**, where you
+Please visit this project's **[latest release assets][latest-release]** where you
 can download documents suitable for viewing. I recommend PDF for humans,
 but other formats are available for convenience. PDF, Markdown, HTML, and
 DOCX (Microsoft Office Open XML) are available at the time of writing.
@@ -41,8 +47,8 @@ DOCX (Microsoft Office Open XML) are available at the time of writing.
 ### What's all this "Releases and Assets" jargon?
 
 My résumé is stored and maintained _as code_ in this GitHub repository, leveraging
-development, test, build, and delivery practices that are common to many modern
-software engineering projects.
+development, test, build, and delivery practices common to many modern software
+engineering projects.
 
 The document's text and layout instructions for the various output formats are
 maintained as source code, subject to revision control. Modifications are made
@@ -273,7 +279,7 @@ exist as they do today.
 
 **Thank You to all open-source contributors for your hard work and generosity.**
 
-[releases]: https://github.com/rhenning/resume/releases
+[latest-release]: https://github.com/rhenning/resume/releases/latest
 [pipeline]: https://github.com/rhenning/resume/actions
 [git-legend]: doc/gitgraph-legend.md
 [max.com]: https://max.com
