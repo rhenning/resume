@@ -27,15 +27,22 @@ keywords:
   - scripting
   - bash
   - linux
+  - macos
+  - nix
+  - nixos
   - database
   - git
   - github
   - aws
+  - site reliability
   - sre
   - devops
   - devsecops
   - observability
   - messaging
+  - streaming
+  - elastic
+  - elasticsearch
   - kafka
   - kubernetes
   - k8s
@@ -279,12 +286,12 @@ IT Operations, Systems Engineering, Build/Release Engineering
   Terratest, Docker & Compose, Chef, Test Kitchen, Goss)
 * Global Traffic Management, Advanced DNS, Ingress & Edge strategy (AWS Global
   Accelerator & Route 53, Akamai GTM, Anycast, F5, BIND, djbdns, PowerDNS)
-* GNU/Linux (Arch, Debian, Ubuntu, Red Hat, CentOS, AL2), Windows Server,
+* GNU/Linux (Arch, Debian/Ubuntu, NixOS, Red Hat/CentOS/Amazon Linux), Windows Server,
   macOS administration
 * Networking (AWS VPC & Transit Gateway, Ethernet, TCP/IP, VLAN, VPN, QoS,
   Linux iptables/iproute2)
 * Revision control (Git, GitHub, Bitbucket/Stash, Subversion)
-* Go/Golang, Python, Ruby, Rails, TDD, Unix shell scripting.
+* Go/Golang, Python, Ruby, Rails, TDD, Unix shell scripting
 * Continuous Integration and Delivery (GitHub Actions, Concourse CI, Jenkins,
   Travis CI, Bamboo, TeamCity)
 * HAProxy, Nginx, Apache web servers and common modules
@@ -299,7 +306,7 @@ IT Operations, Systems Engineering, Build/Release Engineering
 * Security tools (Keybase, GnuPG, PGP, OpenSSL, TLS, CAs, PKI)
 * Network sniffers & protocol analyzers (tcpdump, Wireshark)
 * Intrusion Detection & Prevention (Amazon GuardDuty & WAF, Snort)
-* Application of AI & LLM tools and prompt engineering
+* Application of AI & LLM tools and pair programming with AI agents
 
 ## Code Samples
 
