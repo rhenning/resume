@@ -34,7 +34,6 @@ keywords:
   - git
   - github
   - aws
-  - site reliability
   - sre
   - devops
   - devsecops
